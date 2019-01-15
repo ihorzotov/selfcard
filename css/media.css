@@ -1,0 +1,39 @@
+@media (min-width: 1025px) {
+  .standart-btn:hover::before {
+    left: 0;
+  }
+  .standart-btn--light:hover {
+    color: #fff;
+    background: #1d9ae5;
+  }
+  .standart-btn--simple:hover {
+    color: #fff;
+    background: #5db3e6;
+  }
+  .switcher.hover input[type=checkbox]:not(:checked):hover + label.switcher__button:after {
+    transform: translateX(62%);
+    border-radius: 0px 14px 14px 0;
+    width: 60%;
+  }
+  .switcher.hover input[type=checkbox]:checked:hover + label.switcher__button:after {
+    transform: translateX(0%);
+    border-radius: 14px 0px 0px 14px;
+    width: 60%;
+  }
+  .switcher-text:hover {
+    color: #1d9ae5;
+  }
+  .form-block__input:hover + .input-background:before {
+    width: 100%;
+    left: 0;
+    opacity: 1;
+  }
+  .footer__element.agree .link:hover {
+    color: #d3d3d3;
+    border-bottom: 1px solid #d3d3d3;
+  }
+  .close-modal:hover {
+    color: #11496a;
+    background: #dddddd;
+  }
+}

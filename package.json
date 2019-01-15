@@ -1,0 +1,27 @@
+{
+  "name": "selfcard",
+  "version": "1.0.0",
+  "description": "personal card service",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "ihorzotov",
+  "license": "ISC",
+  "devDependencies": {
+    "browser-sync": "^2.26.3",
+    "gulp": "^3.9.1"
+  },
+  "dependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ihorzotov.github.io/selfcard.git"
+  },
+  "keywords": [
+    "instagram"
+  ],
+  "bugs": {
+    "url": "https://github.com/ihorzotov.github.io/selfcard/issues"
+  },
+  "homepage": "https://github.com/ihorzotov.github.io/selfcard#readme"
+}
