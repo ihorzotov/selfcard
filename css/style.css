@@ -162,8 +162,22 @@ ul {
   font-weight: 200;
 }
 
+@font-face {
+  font-family: 'Monserat';
+  src: url("../fonts/Monserat/Montserrat-MediumItalic.otf");
+  font-style: italic;
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: 'GothamPro';
+  src: url("../fonts/GothamPro/GothaProMed.otf");
+  font-style: medium;
+  font-weight: 500;
+}
+
 body.overflow, html.overflow {
-  height: 100%;
+  height: auto;
   position: relative;
   overflow: hidden !important;
   /*-webkit-overflow-scrolling: auto;*/
@@ -176,6 +190,7 @@ body {
   background-color: #fff;
   line-height: 26px;
   color: #174e6a;
+  min-width: 320px;
   margin: auto;
   -webkit-overflow-scrolling: touch;
 }
@@ -245,6 +260,15 @@ input, button, textarea {
 }
 
 .standart-btn.standart-btn--simple:before {
+  display: none;
+}
+
+.standart-btn.standart-btn--blue {
+  background: #54a2d1;
+  overflow: initial;
+}
+
+.standart-btn.standart-btn--blue:before {
   display: none;
 }
 
@@ -404,6 +428,13 @@ input, button, textarea {
   position: relative;
   z-index: 3;
   transition: color .3s;
+  height: 100%;
+  line-height: 32px;
+  width: 50%;
+}
+
+.switcher .switcher-text + .switcher-text {
+  text-align: right;
 }
 
 .switcher .switcher__button {
@@ -413,15 +444,23 @@ input, button, textarea {
   box-shadow: 0px 1px 7px 0px rgba(0, 0, 0, 0.1);
   border-radius: 16px;
   display: flex;
-  align-items: center;
-  justify-content: space-between;
   padding: 0 14px;
   cursor: pointer;
   position: relative;
   overflow: hidden;
+  background: #fff;
 }
 
-.switcher .switcher__button:before, .switcher .switcher__button:after {
+.switcher .switcher__button .label-bg {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+}
+
+.switcher .switcher__button .label-bg:before, .switcher .switcher__button .label-bg:after {
   content: '';
   width: calc(50% - 2px);
   position: absolute;
@@ -435,28 +474,28 @@ input, button, textarea {
   z-index: 2;
 }
 
-.switcher .switcher__button:after {
+.switcher .switcher__button .label-bg:after {
   width: 0;
   background: #dfe8ed;
   z-index: 1;
 }
 
-.switcher input[type=checkbox]:checked + label.switcher__button .switcher-text:last-child {
+.switcher input[type=checkbox]:not(:checked) + .switcher-text {
   color: #fff;
-  transition-delay: .2s;
+  transition-delay: .12s;
 }
 
-.switcher input[type=checkbox]:checked + label.switcher__button:before {
+.switcher input[type=checkbox]:checked + .switcher-text + .switcher-text {
+  color: #fff;
+  transition-delay: .12s;
+}
+
+.switcher input[type=checkbox]:checked ~ .label-bg:before {
   transform: translateX(100%);
 }
 
-.switcher input[type=checkbox]:checked + label.switcher__button:after {
+.switcher input[type=checkbox]:checked ~ .label-bg:after {
   transform: translateX(100%);
-}
-
-.switcher input[type=checkbox]:not(:checked) + label.switcher__button .switcher-text:first-child {
-  color: #fff;
-  transition-delay: .2s;
 }
 
 /*form-input*/
@@ -466,6 +505,24 @@ input, button, textarea {
   position: relative;
   z-index: 1;
   line-height: 0;
+}
+
+.form-block__label.disabled {
+  pointer-events: none;
+}
+
+.form-block__label.disabled .form-block__input {
+  color: #ababab;
+  box-shadow: none;
+}
+
+.form-block__label.disabled .input-background:before {
+  display: none;
+}
+
+.form-block__label.disabled .input-background:after {
+  border: 2px solid #eaeaea !important;
+  opacity: 1 !important;
 }
 
 .form-block__label .input-background {
@@ -526,6 +583,10 @@ input, button, textarea {
 
 .form-block__input::placeholder {
   font-weight: 400;
+}
+
+.form-block__input.form-block__input--simple {
+  background: #fff;
 }
 
 textarea.form-block__input {
@@ -595,11 +656,88 @@ textarea.form-block__input {
   animation-duration: 0.6s;
 }
 
+.modal .close-modal {
+  font-size: 24px;
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  border-radius: 50%;
+  color: #3d3d3d;
+  transition: background .3s,color .3s;
+}
+
+.modal .close-modal i {
+  line-height: 40px;
+}
+
 @keyframes zoom {
   from {
     transform: scale(0);
   }
   to {
     transform: scale(1);
+  }
+}
+
+@media (min-width: 1025px) {
+  .standart-btn:hover::before {
+    left: 0;
+  }
+  .standart-btn--light:hover {
+    color: #fff;
+    background: #1d9ae5;
+  }
+  .standart-btn--simple:hover {
+    color: #fff;
+    background: #5db3e6;
+  }
+  .standart-btn--blue:hover {
+    background: #1d9ae5;
+  }
+  .switcher.hover input[type=checkbox]:not(:checked):hover ~ .label-bg:after {
+    transform: translateX(62%);
+    border-radius: 0px 14px 14px 0;
+    width: 60%;
+  }
+  .switcher.hover input[type=checkbox]:checked:hover ~ .label-bg:after {
+    transform: translateX(0%);
+    border-radius: 14px 0px 0px 14px;
+    width: 60%;
+  }
+  .switcher.hover.js-tab-switcher input[type=checkbox]:not(:checked):hover ~ .label-bg:after {
+    transform: translateX(65%);
+    border-radius: 0px 24px 24px 0;
+  }
+  .switcher.hover.js-tab-switcher input[type=checkbox]:checked:hover ~ .label-bg:after {
+    transform: translateX(0%);
+    border-radius: 24px 0px 0px 24px;
+  }
+  .switcher.hover.resolution__switcher input[type=checkbox]:not(:checked):hover ~ .label-bg:after {
+    transform: translateX(64%);
+    border-radius: 0px 24px 24px 0;
+  }
+  .switcher.hover.resolution__switcher input[type=checkbox]:checked:hover ~ .label-bg:after {
+    transform: translateX(0%);
+    border-radius: 24px 0px 0px 24px;
+  }
+  .switcher-text:hover {
+    color: #1d9ae5;
+  }
+  .form-block__input:hover + .input-background:before {
+    width: 100%;
+    left: 0;
+    opacity: 1;
+  }
+  .footer__element.agree .link:hover {
+    color: #d3d3d3;
+    border-bottom: 1px solid #d3d3d3;
+  }
+  .close-modal:hover {
+    color: #11496a;
+    background: #dddddd;
   }
 }

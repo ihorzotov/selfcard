@@ -7,7 +7,6 @@
     <link rel="icon" href="" type="image/png">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/front.css">
-    <link rel="stylesheet" href="css/media.css">
 </head>
 <body class="pagename-index">
   <header class="header">
@@ -260,11 +259,12 @@
               <div class="price-card__flag">
                 <span><span class="num-js">279</span> <sup>руб</sup></span>
               </div>
-              <div class="switcher hover">
-                <input type="checkbox" class="switcher__input" id="switcher__input">
-                <label for="switcher__input" class="switcher__button">
+              <div class="switcher js-price-animation hover">
+                <label class="switcher__button">
+                  <input type="checkbox" class="switcher__input">
                   <span class="switcher-text js-switcher-disabled" data-price='279'>6 мес.</span>
                   <span class="switcher-text js-switcher-checked" data-price='500'>в год</span>
+                  <div class="label-bg"></div>
                 </label>
               </div>
             </div>
@@ -363,6 +363,79 @@
 
 
   <script src="js/jquery-3.2.1.min.js"></script>
-  <script src="js/script.js"></script>
+  <script>
+    $(document).ready(function(){
+    // phone animation when document is ready;
+        $('.pagename-index .phone-block.animation').removeClass('animation');
+
+        // .slide-phone-button
+        $('.slide-button').click(function(){
+          $(this).parents('.main-frst').toggleClass('active');
+        });
+
+        //counter animation func
+        function NumCount( priceStart ,priceEnd,thisEL ){
+          var numbStart = priceStart;
+              $({ numberValue: priceEnd}).animate({numberValue: numbStart}, {
+                  duration: 400,
+                  easing: "linear",
+                  
+                  step: function(val) {
+                    thisEL.parents('.price-card').find('.num-js').html(val.toFixed(0));
+                  }
+                });
+        };
+        //
+
+    //price count animation  on click 'switcher', change class="hover" and change tab  ; 
+        $('.switcher').click(function(){
+          var thisEL = $(this),
+              propChecked = thisEL.find('.switcher__input').prop('checked');
+
+              if( thisEL.hasClass('hover') ) {
+                  thisEL.removeClass('hover');
+                  thisEL.mouseout(function(){
+                    thisEL.addClass('hover')
+                  });
+              };
+
+              if( thisEL.hasClass('js-price-animation') ) {
+                  var disabledPrice = +thisEL.find('.js-switcher-disabled').attr('data-price'),
+                      checkedPrice = +thisEL.find('.js-switcher-checked').attr('data-price');
+
+                      if( propChecked == true ) {
+                          NumCount( checkedPrice, disabledPrice, thisEL);
+                      }else{
+                          NumCount( disabledPrice, checkedPrice, thisEL)
+                      };
+              }else if( thisEL.hasClass('js-tab-switcher') ){
+                        if( propChecked == true ){
+                            thisEL.parents('.js-switcher-parent').addClass('active')
+                        }else{
+                            thisEL.parents('.js-switcher-parent').removeClass('active')
+                        }
+                        
+              };
+
+        });
+
+    // click function
+        (function click(){
+          // modal
+          $('.modal-button').click(function(){
+            $('.modal.modal-contact').addClass('active');
+            $('body,html').addClass('overflow');
+          });
+
+          // close modal
+          $('.close-modal').click(function(){
+            $(this).parents('.modal').removeClass('active');
+            $('body,html').removeClass('overflow')
+          });
+
+        }());
+    //
+    });//document ready
+  </script>
 </body>
 </html>

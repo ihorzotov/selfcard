@@ -6,7 +6,8 @@
     <title>Document</title>
     <link rel="icon" href="" type="image/png">
     <link rel="stylesheet" href="../css/style.css">
-    
+    <link rel="stylesheet" href="../css/account.css">
+    <link rel="stylesheet" href="../css/page.css">
     <link rel="stylesheet" href="../css/media.css">
 </head>
 <body class="pagename-constructor">
@@ -16,50 +17,691 @@
         <img src="../img/selfcard.me.png" alt="">
       </div>
       <ul class="header-list">
-        <li class="header-list__item">
-          <a href="#" class="link">Начало</a>
+        <li class="header-list__item current">
+          <a href="#" class="link">Конструктор</a>
         </li>
         <li class="header-list__item">
-          <a href="#" class="link">Польза</a>
+          <a href="#" class="link">Тариф</a>
         </li>
         <li class="header-list__item">
-          <a href="#" class="link">для MLM</a>
+          <a href="#" class="link">Реферальная сеть</a>
         </li>
-        <li class="header-list__item">
-          <a href="#" class="link">Тарифы</a>
+        <li class="header-list__item dropdown">
+          <span class="dropdown-button js-dropdown-button ">поддержка</span>
+            <ul class="dropdown__list">
+              <li class="dropdown__item"><a href="#">FAQ</a></li>
+              <li class="dropdown__item"><a href="#">Нашли ошибку?</a></li>
+            </ul>
         </li>
       </ul>
       <div class="header-authentication">
-        <a href="#" class="header-authentication__link">
-          <i>11</i>
-          <span class="text">Войти в аккаунт</span>
-        </a>
+        <div class="header-authentication__content">
+          <div class="header-authentication__img" style="background-image: url('../img/content-card__img6.png');">
+          </div>
+          <span class="header-authentication__name">vvvlad</span>
+        </div>
+        <div class="header-authentication__dropdown">
+          <ul class="authentication__list">
+            <li class="authentication__item"><a href="#">Вывод средств</a></li>
+            <li class="authentication__item"><a href="#">Настройки профиля</a></li>
+            <li class="authentication__item"><a href="#">Выйти</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="header-alert unread">
+        <i>1</i>
       </div>
     </div>
   </header>
   <main class="main">
+    <div class="wrapper">
+      <div class="constructor">
+        <div class="constructor-save">
+          <button class="constructor-save__button"><i>1</i></button>
+        </div>
+        <div class="constructor-phone">
+          <div class="constructor-phone__image constructor-phone__top" style="background-image: url(../img/phone-top.png);"></div> 
+          <div class="constructor-phone__image constructor-phone__middle" style="background-image: url(../img/phone-middle.png);"></div>
+          <div class="constructor-phone__image constructor-phone__bottom" style="background-image: url(../img/phone-bottom.png);"></div> 
+          <div class="constructor-phone__content">
+            <div class="page-wrapper">
+              <div class="slide-element self">
+                <button class="slide-element__button"><img src="../img/slide-element__button.svg" alt=""></button>
+                <div class="self__photo" style="background-image: url(../img/selfphoto.png);"></div>
+                <p class="self__name">@vvvlad</p>
+              </div>
+              <div class="slide-element text-block">
+                <button class="slide-element__button"><img src="../img/slide-element__button.svg" alt=""></button>
+                <p class="text">
+                  Идейные соображения высшего порядка, а также дальнейшее развитие различных форм деятельност позволяет выполнять важные задания по разработке систем массового участия. 
+                </p>
+              </div>
+              <div class="slide-element link-block">
+                <button class="slide-element__button"><img src="../img/slide-element__button.svg" alt=""></button>
+                <a href="#" class="button-style">Мой сайт</a>
+              </div>
+              <div class="slide-element separator-block">
+                <button class="slide-element__button"><img src="../img/slide-element__button.svg" alt=""></button>
+                <hr>
+              </div>
+              <div class="slide-element video-block">
+                <button class="slide-element__button"><img src="../img/slide-element__button.svg" alt=""></button>
+                <div class="video-block__iframe">
+                  <iframe src="https://www.youtube.com/embed/w45AtqQLgcA" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                </div>
+              </div>
+              <div class="slide-element video-block">
+                <button class="slide-element__button"><img src="../img/slide-element__button.svg" alt=""></button>
+                <div class="video-block__iframe">
+                  <iframe src="https://player.vimeo.com/video/76979871" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                </div>
+              </div>
+              <div class="slide-element link-block bg-violet">
+                <button class="slide-element__button"><img src="../img/slide-element__button.svg" alt=""></button>
+                <a href="#" class="button-style">Написать в Viber</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="constructor-styles">
+          <div class="constructor-styles__link">
+            <label class="form-block__label" for="">
+              <input type="text" name="modal-name" class="form-block__input form-block__input--simple" value="https://selfcard.my/vvvlad" disabled>
+              <button class="copy-button js-copy"><i>1</i></button>
+            </label>
+          </div>
+          <div class="constructor-styles__content js-switcher-parent">
+            <div class="switcher js-tab-switcher hover">
+              <label class="switcher__button">
+                <input type="checkbox" class="switcher__input" id="switcher-tabs__input">
+                <span class="switcher-text">Добавление</span>
+                <span class="switcher-text">Оформление</span>
+                <div class="label-bg"></div>
+              </label>
+            </div>
+            <div class="style-tab style-tab__add">
+              <div class="style-tab__block js-modal-templates" id="modal-avatar">
+                <img src="../img/photo.png" alt="">
+                <p class="title">Аватар</p>
+              </div>
+              <div class="style-tab__block js-modal-templates" id="modal-button">
+                <img src="../img/button.png" alt="">
+                <p class="title">Кнопка</p>
+              </div>
+              <div class="style-tab__block js-modal-templates" id="modal-text">
+                <img src="../img/text.png" alt="">
+                <p class="title">Текст</p>
+              </div>
+              <div class="style-tab__block js-modal-templates" id="modal-separator">
+                <img src="../img/separator.png" alt="">
+                <p class="title">Разделитель</p>
+              </div>
+              <div class="style-tab__block js-modal-templates" id="modal-messenger">
+                <img src="../img/messanger.png" alt="">
+                <p class="title">Мессенджер</p>
+              </div>
+              <div class="style-tab__block js-modal-templates" id="modal-social">
+                <img src="../img/social.png" alt="">
+                <p class="title">Соц. сеть</p>
+              </div>
+              <div class="style-tab__block js-modal-templates" id="modal-gallery">
+                <img src="../img/photo-slider.png" alt="">
+                <p class="title">Фотослайдер</p>
+              </div>
+              <div class="style-tab__block js-modal-templates" id="modal-video">
+                <img src="../img/video.png" alt="">
+                <p class="title">Видео</p>
+              </div>
+              <div class="style-tab__block disabled">
+                <img src="../img/soon.png" alt="">
+                <p class="title">Скоро...</p>
+              </div>
+            </div>
+            <div class="style-tab style-tab__styles">
+              <p class="style-tab__title">Нейтральные темы</p>
+                <div class="style-tab__block js-block-radio">
+                  <p class="title">Текст</p>
+                  <span class="button">Кнопка</span>
+                </div>
+                <div class="style-tab__block js-block-radio">
+                  <p class="title">Текст</p>
+                  <span class="button">Кнопка</span>
+                </div>
+                <div class="style-tab__block js-block-radio">
+                  <p class="title">Текст</p>
+                  <span class="button">Кнопка</span>
+                </div>
+                <div class="style-tab__block js-block-radio">
+                  <p class="title">Текст</p>
+                  <span class="button">Кнопка</span>
+                </div>
+                <div class="style-tab__block js-block-radio">
+                  <p class="title">Текст</p>
+                  <span class="button">Кнопка</span>
+                </div>
+              <p class="style-tab__title">Бизнес темы</p>
+                <div class="style-tab__block js-block-radio">
+                  <p class="title">Текст</p>
+                  <span class="button">Кнопка</span>
+                </div>
+                <div class="style-tab__block js-block-radio">
+                  <p class="title">Текст</p>
+                  <span class="button">Кнопка</span>
+                </div>
+                <div class="style-tab__block js-block-radio">
+                  <p class="title">Текст</p>
+                  <span class="button">Кнопка</span>
+                </div>
+                <div class="style-tab__block js-block-radio">
+                  <p class="title">Текст</p>
+                  <span class="button">Кнопка</span>
+                </div>
+                <div class="style-tab__block js-block-radio">
+                  <p class="title">Текст</p>
+                  <span class="button">Кнопка</span>
+                </div>
+                <div class="style-tab__block js-block-radio">
+                  <p class="title">Текст</p>
+                  <span class="button">Кнопка</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal-templates">
+      <div class="modal-templates__content" data-target="modal-avatar" data-type='Avatar'>
+        <div class="constructor-modal__title">
+          <span class="title">Аватар</span> <span class="title-status"></span>
+        </div>
+        <div class="template-personal">
+          <div class="js-uploader">
+            <label class="file-uploader">
+              <input type="file" accept="image/*" class="js-input-file">
+              <div class="template-personal__bg js-img-holder" style="background-image: url(../img/selfphoto.png);">
+              </div>
+            </label>
+          </div>
+          <p class="template-personal__name js-signature">vvvlad</p>
+        </div>
+        <div class="template-content">
+          <div class="template-content__container">
+            <div class="wrap-drop content-276px js-image-size">
+              <div class="selected-el"><span></span></div>
+              <ul class="drop">
+                  <li data-size="120x120" class="selected"><a>120х120 пикселей</a></li>
+                  <li data-size="100x100"><a>100х100 пикселей</a></li>
+                  <li data-size="80x80"><a>80х80 пикселей</a></li>
+              </ul>
+            </div>
+            <label class="container  content-114px">
+              <input type="checkbox" class="js-signature__checkbox" name="checbox-2" checked="checked">
+              <span class="text">Подпись</span>
+              <span class="checkmark"></span>
+            </label>
+          </div>
+          <div class="template-content__container">
+            <label class="form-block__label content-276px js-signature" for="">
+              <input type="text" name="modal-email" class="form-block__input" placeholder="Подпись" value="vvvladd">
+              <span class="input-background"></span>
+            </label>
+            <div class="wrap-drop content-114px js-font-size">
+              <div class="selected-el"><span></span></div>
+              <ul class="drop">
+                  <li data-size="14" class="selected"><a>14</a></li>
+                  <li data-size="16"><a>16</a></li>
+                  <li data-size="18"><a>18</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-templates__content" data-target="modal-separator" data-type='Separator'>
+        <div class="constructor-modal__title">
+          <span class="title">Разделитель</span> <span class="title-status"></span>
+        </div>
+        <div class="template-content content-100">
+          <div class="template-content__container">
+            <div class="wrap-drop content-280px js-line-type">
+              <div class="selected-el"><span></span></div>
+              <ul class="drop">
+                  <li data-line-type="line" class="selected"><a>Линия ———————</a></li>
+                  <li data-line-type="dashed"><a>Пунктир  –  –  –  –  –  –  – –</a></li>
+              </ul>
+            </div>
+            <label class="container  content-300px js-hidden-line" data-access="0">
+              <input type="checkbox" name="checbox-2" class="hidden-line__checkbox">
+              <span class="text">Не показывать, оставить отступ</span>
+              <span class="checkmark"></span>
+            </label>
+          </div>
+          <div class="template-content__container space-normal">
+            <div class="wrap-drop content-114px js-top-margin">
+              <p class="wrap-drop__title">Верхний отступ</p>
+              <div class="selected-el"><span></span></div>
+              <ul class="drop">
+                  <li data-top="20" class="selected"><a>20</a></li>
+                  <li data-top="25"><a>25</a></li>
+                  <li data-top="30"><a>30</a></li>
+                  <li data-top="35"><a>35</a></li>
+                  <li data-top="40"><a>40</a></li>
+                  <li data-top="45"><a>45</a></li>
+                  <li data-top="50"><a>50</a></li>
+                  <li data-top="55"><a>55</a></li>
+                  <li data-top="60"><a>60</a></li>
+              </ul>
+            </div>
+            <div class="wrap-drop content-114px js-bottom-margin">
+              <p class="wrap-drop__title">Нижний отступ</p>
+              <div class="selected-el"><span></span></div>
+              <ul class="drop">
+                  <li data-bottom="20" class="selected"><a>20</a></li>
+                  <li data-bottom="25"><a>25</a></li>
+                  <li data-bottom="30"><a>30</a></li>
+                  <li data-bottom="35"><a>35</a></li>
+                  <li data-bottom="40"><a>40</a></li>
+                  <li data-bottom="45"><a>45</a></li>
+                  <li data-bottom="50"><a>50</a></li>
+                  <li data-bottom="55"><a>55</a></li>
+                  <li data-bottom="60"><a>60</a></li>
+              </ul>
+            </div>
+            <div class="wrap-drop content-114px js-line-width">
+              <p class="wrap-drop__title">Ширина линии</p>
+              <div class="selected-el"><span></span></div>
+              <ul class="drop">
+                  <li data-width="10" class="selected"><a>10</a></li>
+                  <li data-width="20"><a>20</a></li>
+                  <li data-width="30"><a>30</a></li>
+                  <li data-width="40"><a>40</a></li>
+                  <li data-width="50"><a>50</a></li>
+                  <li data-width="60"><a>60</a></li>
+                  <li data-width="70"><a>70</a></li>
+                  <li data-width="80"><a>80</a></li>
+                  <li data-width="90"><a>90</a></li>
+                  <li data-width="100"><a>100</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-templates__content modal-pro__access" data-type='Pro-access' data-target="pro-access">
+        <p class="pro-access__title">Рекомендуем подключить self-тариф, <br> что бы воспользоваться этой функцией</p>
+        <div class="price-card">
+          <div class="price-card__top">
+            <div class="price-card__flag">
+              <span><span class="num-js">279</span> <sup>руб</sup></span>
+            </div>
+            <div class="switcher js-price-animation hover">
+              <label class="switcher__button">
+                <input type="checkbox" class="switcher__input">
+                <span class="switcher-text js-switcher-disabled" data-price='279'>6 мес.</span>
+                <span class="switcher-text js-switcher-checked" data-price='500'>в год</span>
+                <div class="label-bg"></div>
+              </label>
+            </div>
+          </div>
+          <ul class="price-card__list">
+            <li class="price-card__item">
+              <i>√</i>
+              <span class="text">Стандартные блоки: аватар, текст, кнопка, отступ, фото</span>
+            </li>
+            <li class="price-card__item checked">
+              <i>√</i>
+              <span class="text">Полный набор мессенджеров</span>
+            </li>
+            <li class="price-card__item checked">
+              <i>√</i>
+              <span class="text">Полный набор соцсетей</span>
+            </li>
+            <li class="price-card__item checked">
+              <i>√</i>
+              <span class="text">Полный набор тем оформления</span>
+            </li>
+            <li class="price-card__item checked">
+              <i>+</i>
+              <span class="text">Настраиваемые действия кнопки</span>
+            </li>
+            <li class="price-card__item checked">
+              <i>+</i>
+              <span class="text">Добавление видео</span>
+            </li>
+            <li class="price-card__item special">
+              <i>1</i>
+              <span class="text">Реферальная ссылка</span>
+            </li>
+          </ul>
+          <a href="#" class="standart-btn"><span>Попробовать</span></a>
+        </div>
+      </div>
+      <div class="modal-templates__content" data-target="modal-button" data-type='Button'>
+        <div class="constructor-modal__title">
+          <span class="title">Кнопка</span> <span class="title-status"></span>
+        </div>
+        <div class="template-content content-100">
+          <div class="template-content__container align-bottom">
+            <div class="wrap-drop content-280px js-button-action">
+              <p class="wrap-drop__title wrap-drop__title--large">Действие кнопки</p>
+              <div class="selected-el"><span></span></div>
+              <ul class="drop">
+                  <li data-action='link' class="selected"><a>Перейти по ссылке</a></li>
+                  <li data-action='tel'><a>Позвонить по номеру</a></li>
+                  <li data-action='mailto'><a>Написать на e-mail</a></li>
+              </ul>
+            </div>
+            <label class="form-block__label content-290px js-button-link" for="">
+              <input type="text" name="modal-email" class="form-block__input" placeholder="Адрес" value="">
+              <span class="input-background"></span>
+            </label>
+          </div>
+          <div class="template-content__container space-normal align-bottom">
+            <div class="wrap-drop content-280px js-font-family">
+              <p class="wrap-drop__title wrap-drop__title--large">Настройки вида</p>
+              <div class="selected-el"><span></span></div>
+              <ul class="drop">
+                  <li data-font='opensans'  class="selected"><a>Open Sans</a></li>
+                  <li data-font='arial' ><a>Arial</a></li>
+                  <li data-font='verdana' ><a>Verdana</a></li>
+                  <li data-font='gotham'  data-access="0"><a>Gotham Pro</a></li>
+              </ul>
+            </div>
+            <div class="wrap-drop content-114px js-font-size">
+              <div class="selected-el"><span></span></div>
+              <ul class="drop">
+                  <li data-size="13" class="selected"><a>13</a></li>
+                  <li data-size="14"><a>14</a></li>
+                  <li data-size="15"><a>15</a></li>
+                  <li data-size="14"><a>16</a></li>
+              </ul>
+            </div>
+            <div class="text-style__block text-style__block--radius  content-114px js-font-style" data-access="1">
+              <span class="text-style__circle" data-style='bold'><b>Ж</b></span>
+              <span class="text-style__circle" data-style='italic'><i>К</i></span>
+            </div>
+          </div>
+          <div class="template-content__container">
+            <label class="form-block__label content-100 js-button-name" for="">
+              <input type="text" name="modal-email" class="form-block__input" placeholder="Текст кнопки" value="">
+              <span class="input-background"></span>
+            </label>
+          </div>
+        </div>
+      </div>
+      <div class="modal-templates__content" data-target="modal-text" data-type='Text'>
+        <div class="constructor-modal__title">
+          <span class="title">Текст</span> <span class="title-status"></span>
+        </div>
+        <div class="template-content content-100">
+          <div class="template-content__container">
+            <div class="wrap-drop content-280px js-font-family">
+              <div class="selected-el"><span></span></div>
+              <ul class="drop">
+                  <li data-font='opensans'  class="selected"><a>Open Sans</a></li>
+                  <li data-font='arial' ><a>Arial</a></li>
+                  <li data-font='verdana' ><a>Verdana</a></li>
+                  <li data-font='gotham'  data-access="0"><a>Gotham Pro</a></li>
+              </ul>
+            </div>
+            <div class="wrap-drop content-114px  js-font-size">
+              <div class="selected-el"><span></span></div>
+              <ul class="drop">
+                  <li data-size="14" class="selected"><a>14</a></li>
+                  <li data-size="16"><a>16</a></li>
+                  <li data-size="18"><a>18</a></li>
+                  <li data-size="20"><a>20</a></li>
+                  <li data-size="22"><a>22</a></li>
+                  <li data-size="24"><a>24</a></li>
+                  <li data-size="26"><a>26</a></li>
+                  <li data-size="28"><a>28</a></li>
+              </ul>
+            </div>
+            <div class="align-block content-146px js-text-align">
+              <div data-align="left" class="align-block__content align-block__left active"><i>l</i></div>
+              <div data-align="center" class="align-block__content align-block__center"><i>c</i></div>
+              <div data-align="right" class="align-block__content align-block__right"><i>r</i></div>
+            </div>
+          </div>
+          <div class="text-style__block text-style__block--radius  content-250px js-font-style" data-access="1">
+            <span class="text-style__circle" data-style='bold'><b>Ж</b></span>
+            <span class="text-style__circle" data-style='italic'><i>К</i></span>
+            <span class="text-style__circle" data-style='underline'><u>Ч</u></span>
+            <span class="text-style__circle" data-style='through'><s>abc</s></span>
+          </div>
+          <div class="template-content__container">
+            <label class="form-block__label content-100 js-textarea-text" for="">
+              <textarea name="modal-textarea" class="form-block__input" placeholder="Текст..."></textarea>
+              <span class="input-background"></span>
+            </label>
+          </div>
+        </div>
+      </div>
+      <div class="modal-templates__content" data-target="modal-messenger" data-type='Messenger'>
+        <div class="constructor-modal__title">
+          <span class="title">Мессенджер</span> <span class="title-status"></span>
+        </div>
+        <div class="template-content content-100">
+          <div class="template-content__container">
+            <ul class="social-list js-selected-messenger">
+              <li data-selected="viber" class="social-list__item active"><i>vb</i></li>
+              <li data-selected="vk" class="social-list__item"><i>vk</i></li>
+              <li data-selected="skype" class="social-list__item"><i>sk</i></li>
+              <li data-selected="telegram" class="social-list__item" data-access="0"><i>tl</i></li>
+              <li data-selected="facebook" class="social-list__item" data-access="0"><i>fb</i></li>
+            </ul>
+          </div>
+          <div class="template-content__container space-normal">
+            <div class="wrap-drop content-280px js-font-family">
+              <div class="selected-el"><span></span></div>
+              <ul class="drop">
+                  <li data-font='opensans'  class="selected"><a>Open Sans</a></li>
+                  <li data-font='arial' ><a>Arial</a></li>
+                  <li data-font='verdana' ><a>Verdana</a></li>
+                  <li data-font='gotham'  data-access="0"><a>Gotham Pro</a></li>
+              </ul>
+            </div>
+            <div class="wrap-drop content-114px margin-left-40px js-font-size">
+              <div class="selected-el"><span></span></div>
+              <ul class="drop">
+                  <li data-size="14" class="selected"><a>14</a></li>
+                  <li data-size="16"><a>16</a></li>
+                  <li data-size="18"><a>18</a></li>
+              </ul>
+            </div>
+            <div class="text-style__block text-style__block--radius  content-114px js-font-style" data-access="1">
+              <span class="text-style__circle" data-style='bold'><b>Ж</b></span>
+              <span class="text-style__circle" data-style='italic'><i>К</i></span>
+            </div>
+          </div>
+          <div class="template-content__container">
+            <label class="form-block__label content-280px js-button-name" for="">
+              <input type="text" name="modal-email" class="form-block__input" placeholder="Текст кнопки" value="Написать в вайбер">
+              <span class="input-background"></span>
+            </label>
+            <label class="form-block__label js-link-value active content-280px" for="">
+              <input type="text" name="modal-email" class="form-block__input" placeholder="+7 (ххх) ххх-хх-хх" value="">
+              <span class="input-background"></span>
+            </label>
+            <label class="form-block__label js-link-value  content-280px form-block__messenger" for="">
+              <input type="text" name="modal-email" class="form-block__input" placeholder="id учетной записи" value="">
+              <span class="input-background"></span>
+            </label>
+          </div>
+        </div>
+      </div>
+      <div class="modal-templates__content" data-target="modal-social" data-type='Social'>
+        <div class="constructor-modal__title">
+          <span class="title">Социальная сеть</span> <span class="title-status"></span>
+        </div>
+        <div class="template-content content-100">
+          <div class="template-content__container">
+            <ul class="social-list js-selected-messenger">
+              <li data-selected="vk" class="social-list__item active"><i>vk</i></li>
+              <li data-selected="ok" class="social-list__item"><i>ok</i></li>
+              <li data-selected="youtube" class="social-list__item"><i>yt</i></li>
+              <li data-selected="instagram" class="social-list__item"><i>in</i></li>
+              <li data-selected="facebook" class="social-list__item" data-access="0"><i>fb</i></li>
+              <li data-selected="twitter" class="social-list__item" data-access="0"><i>tv</i></li>
+            </ul>
+          </div>
+          <div class="template-content__container space-normal">
+            <div class="wrap-drop content-280px js-font-family">
+              <div class="selected-el"><span></span></div>
+              <ul class="drop">
+                  <li data-font='opensans'  class="selected"><a>Open Sans</a></li>
+                  <li data-font='arial' ><a>Arial</a></li>
+                  <li data-font='verdana' ><a>Verdana</a></li>
+                  <li data-font='gotham'  data-access="0"><a>Gotham Pro</a></li>
+              </ul>
+            </div>
+            <div class="wrap-drop content-114px margin-left-40px js-font-size">
+              <div class="selected-el"><span></span></div>
+              <ul class="drop">
+                  <li data-size="14" class="selected"><a>14</a></li>
+                  <li data-size="16"><a>16</a></li>
+                  <li data-size="18"><a>18</a></li>
+              </ul>
+            </div>
+            <div class="text-style__block text-style__block--radius  content-114px js-font-style" data-access="1">
+              <span class="text-style__circle" data-style='bold'><b>Ж</b></span>
+              <span class="text-style__circle" data-style='italic'><i>К</i></span>
+            </div>
+          </div>
+          <div class="template-content__container">
+            <label class="form-block__label content-280px js-button-name" for="">
+              <input type="text" name="modal-email" class="form-block__input" placeholder="Текст кнопки" value="Написать в вайбер">
+              <span class="input-background"></span>
+            </label>
+            <label class="form-block__label js-link-value content-280px" for="">
+              <input type="text" name="modal-email" class="form-block__input" placeholder="Ссылка" value="">
+              <span class="input-background"></span>
+            </label>
+          </div>
+        </div>
+      </div>
+      <div class="modal-templates__content" data-target="modal-gallery" data-type='Gallery'>
+        <div class="constructor-modal__title">
+          <span class="title">Фотослайдер</span> <span class="title-status"></span>
+        </div>
+        <div class="template-content content-100">
+          <div class="template-content__container space-normal">
+            <div class="switcher resolution__switcher hover">
+              <label class="switcher__button">
+                <input type="checkbox" class="switcher__input">
+                <span class="switcher-text">1 : 1</span>
+                <span class="switcher-text">16 : 10</span>
+                <div class="label-bg"></div>
+              </label>
+            </div>
+            <span class="tooltip-button__js info-button" data-tooltip="1" data-tooltip__text="Формат: Jpeg, PNG. Размер: от 690 пикс.">i</span>
+          </div>
+          <div class="gallery-block gallery-block--16">
+            <div class="template-personal content-100">
+              <div class="js-uploader">
+                <span class="remove-button"><i>x</i></span>
+                <label class="file-uploader gallery-card">
+                  <input type="file" accept="image/*" class="js-input-file">
+                  <div class="template-personal__bg js-img-holder" style="background-image: url(../img/gallery-card__bg.png);">
+                  </div>
+                </label>
+              </div>
+              <div class="js-uploader">
+                <span class="remove-button"><i>x</i></span>
+                <label class="file-uploader gallery-card">
+                  <input type="file" accept="image/*" class="js-input-file">
+                  <div class="template-personal__bg js-img-holder" style="background-image: url(../img/gallery-card__bg.png);">
+                  </div>
+                </label>
+              </div>
+              <div class="js-uploader">
+                <span class="remove-button"><i>x</i></span>
+                <label class="file-uploader gallery-card">
+                  <input type="file" accept="image/*" class="js-input-file">
+                  <div class="template-personal__bg js-img-holder" style="background-image: url(../img/gallery-card__bg.png);">
+                  </div>
+                </label>
+              </div>
+              <div class="js-uploader">
+                <span class="remove-button"><i>x</i></span>
+                <label class="file-uploader gallery-card">
+                  <input type="file" accept="image/*" class="js-input-file">
+                  <div class="template-personal__bg js-img-holder" style="background-image: url(../img/gallery-card__bg.png);">
+                  </div>
+                </label>
+              </div>
+              <div class="js-uploader">
+                <span class="remove-button"><i>x</i></span>
+                <label class="file-uploader gallery-card">
+                  <input type="file" accept="image/*" class="js-input-file">
+                  <div class="template-personal__bg js-img-holder" style="background-image: url(../img/gallery-card__bg.png);">
+                  </div>
+                </label>
+              </div>
+            </div>
+          </div>
+          <div class="template-content__container space-normal">
+            <label class="container slider-change">
+              <input type="checkbox" name="checbox-2">
+              <span class="text">Автосмена сайдов</span>
+              <span class="checkmark"></span>
+            </label>
+            <div class="wrap-drop content-114px">
+              <div class="selected-el"><span></span></div>
+              <ul class="drop">
+                  <li class="selected"><a>1</a></li>
+                  <li><a>2</a></li>
+                  <li><a>3</a></li>
+                  <li><a>4</a></li>
+                  <li><a>5</a></li>
+                  <li><a>6</a></li>
+                  <li><a>7</a></li>
+                  <li><a>8</a></li>
+                  <li><a>9</a></li>
+                  <li><a>10</a></li>
+              </ul>
+            </div>
+            <p class="time-title">сек.</p>
+          </div>
+        </div>
+      </div>
+      <div class="modal-templates__content" data-target="modal-video" data-type='Video'>
+        <div class="constructor-modal__title">
+          <span class="title">Видео</span> <span class="title-status"></span>
+        </div>
+        <div class="template-content content-100">
+          <div class="template-content__container">
+            <div class="label-tooltip content-100">
+              <label class="form-block__label js-video-src" for="">
+                <input type="text" name="modal-email" class="form-block__input" placeholder="Ссылка с Youtube, Vimeo" value="">
+                <span class="input-background"></span>
+              </label>
+              <span class="tooltip-button__js info-button" data-tooltip="1" data-tooltip__text="Какой-то текст">i</span>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- gallery card stock -->
+    <div class="js-uploader gallery-card__stock">
+      <span class="remove-button"><i>x</i></span>
+      <label class="file-uploader gallery-card">
+        <input type="file" accept="image/*" class="js-input-file">
+        <div class="template-personal__bg js-img-holder" style="background-image: url(../img/gallery-card__bg.png);">
+        </div>
+      </label>
+    </div>
 
   </main>
   <footer class="footer">
-    <div class="modal modal-contact">
+    <div class="modal constructor-modal">
       <div class="modal__content">
-        <form action="#" class="modal-form">
-            <p class="modal-form__title">Ваше предложение</p>
-            <span class="close-modal"><i>X</i></span>
-            <label class="form-block__label" for="">
-              <input type="text" name="modal-name" class="form-block__input" placeholder="Имя">
-              <span class="input-background"></span>
-            </label>
-            <label class="form-block__label" for="">
-              <input type="text" name="modal-email" class="form-block__input" placeholder="E-mail">
-              <span class="input-background"></span>
-            </label>
-            <label class="form-block__label" for="">
-              <textarea name="modal-textarea" class="form-block__input" placeholder="Предложение"></textarea>
-              <span class="input-background"></span>
-            </label>
-            <button class="standart-btn standart-btn--simple "><span>Отправить</span></button>
-        </form>
+        <div class="constructor-modal__container">
+          <span class="close-modal"><i>X</i></span>
+          <div class="js-appendEl-holder"></div>
+          <button class="standart-btn standart-btn--blue js-save-modal">Применить</button>
+        </div>
       </div>
     </div>
     <div class="wrapper wrapper-container">
@@ -76,9 +718,13 @@
       </div>
     </div>
   </footer>
-
+<div class="tooltip">
+  <p class="text"></p>
+</div>
 
   <script src="../js/jquery-3.2.1.min.js"></script>
+  <script src="../js/jquery-ui-1.9.2.custom.min.js"></script>
+  <script src="../js/jquery.ui.touch-punch.min.js"></script>
   <script src="../js/script.js"></script>
 </body>
 </html>

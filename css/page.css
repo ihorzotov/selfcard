@@ -1,0 +1,318 @@
+.page-wrapper {
+  display: block;
+  margin: auto;
+  max-width: 720px;
+  padding: 0 20px;
+  color: #3d3d3d;
+}
+
+.page-wrapper .slide-element:last-child {
+  margin-bottom: 0 !important;
+}
+
+.link-block .button-style {
+  width: 100%;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-transform: uppercase;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 8px;
+  color: #fff;
+  background: #3d3d3d;
+}
+
+.link-block.bg-violet .button-style {
+  background: #665cac;
+}
+
+.slide-element + .slide-element {
+  margin-top: 30px;
+}
+
+.slide-element {
+  position: relative;
+}
+
+.self__photo {
+  width: 120px;
+  height: 120px;
+  background: #eaeaea 50% 50% no-repeat;
+  background-size: cover;
+  margin: 0 auto 15px;
+  overflow: hidden;
+  border-radius: 50%;
+}
+
+.self__name {
+  text-align: center;
+  font-size: 20px;
+  font-weight: 600;
+  color: #3d3d3d;
+  padding-bottom: 7px;
+}
+
+.text-block {
+  margin-bottom: 27px;
+  color: #3d3d3d;
+  line-height: 1.45;
+  font-size: 14px;
+}
+
+.text-block .text {
+  overflow: hidden;
+}
+
+.separator-block + .slide-element {
+  margin-top: 0;
+}
+
+.separator-block {
+  margin: 30px 0;
+  display: flex;
+  justify-content: center;
+}
+
+.separator-block hr {
+  margin: 0;
+  border: none;
+  border-bottom: 1px solid #d3d3d3;
+}
+
+.video-block__iframe {
+  background: #000;
+  width: 100%;
+  padding: 62% 0 0;
+  position: relative;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.video-block__iframe iframe {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/*img width*/
+.img120x120 .self__photo {
+  width: 120px;
+  height: 120px;
+}
+
+.img100x100 .self__photo {
+  width: 100px;
+  height: 100px;
+}
+
+.img80x80 .self__photo {
+  width: 80px;
+  height: 80px;
+}
+
+/*font size*/
+.fs13 .self__name, .fs13 .button-style, .fs13 .text {
+  font-size: 13px;
+}
+
+.fs14 .self__name, .fs14 .button-style, .fs14 .text {
+  font-size: 14px;
+}
+
+.fs15 .self__name, .fs15 .button-style, .fs15 .text {
+  font-size: 15px;
+}
+
+.fs16 .self__name, .fs16 .button-style, .fs16 .text {
+  font-size: 16px;
+}
+
+.fs18 .self__name, .fs18 .button-style, .fs18 .text {
+  font-size: 18px;
+}
+
+.fs20 .self__name, .fs20 .button-style, .fs20 .text {
+  font-size: 20px;
+}
+
+.fs22 .self__name, .fs22 .button-style, .fs22 .text {
+  font-size: 22px;
+}
+
+.fs24 .self__name, .fs24 .button-style, .fs24 .text {
+  font-size: 24px;
+}
+
+.fs26 .self__name, .fs26 .button-style, .fs26 .text {
+  font-size: 26px;
+}
+
+.fs28 .self__name, .fs28 .button-style, .fs28 .text {
+  font-size: 28px;
+}
+
+/*font style*/
+.text-style-bold .button-style, .text-style-bold .text {
+  font-weight: 700;
+}
+
+.text-style-italic .button-style, .text-style-italic .text {
+  font-style: italic;
+}
+
+/*text align*/
+.text-align-left {
+  text-align: left;
+}
+
+.text-align-center {
+  text-align: center;
+}
+
+.text-align-right {
+  text-align: right;
+}
+
+/*text decoration*/
+.text-style-through {
+  text-decoration: line-through;
+}
+
+.text-style-underline {
+  text-decoration: underline;
+}
+
+/*separator type*/
+.separator-block.line-type-line hr {
+  border-bottom: 1px solid #d3d3d3;
+}
+
+.separator-block.line-type-dashed hr {
+  border: none;
+  height: 1px;
+  background: url(../img/dashed-line.png) left center repeat-x;
+}
+
+/*separator hide*/
+.separator-block.line-show hr {
+  display: block;
+}
+
+.separator-block.line-hidden hr {
+  display: none;
+}
+
+/*separator margin*/
+.separator-block {
+  /*top margin*/
+  /*bottom margin*/
+}
+
+.separator-block.top-margin-20 {
+  margin-top: 20px;
+}
+
+.separator-block.top-margin-25 {
+  margin-top: 25px;
+}
+
+.separator-block.top-margin-30 {
+  margin-top: 30px;
+}
+
+.separator-block.top-margin-35 {
+  margin-top: 35px;
+}
+
+.separator-block.top-margin-40 {
+  margin-top: 40px;
+}
+
+.separator-block.top-margin-45 {
+  margin-top: 45px;
+}
+
+.separator-block.top-margin-50 {
+  margin-top: 50px;
+}
+
+.separator-block.top-margin-60 {
+  margin-top: 60px;
+}
+
+.separator-block.bottom-margin-20 {
+  margin-bottom: 20px;
+}
+
+.separator-block.bottom-margin-25 {
+  margin-bottom: 25px;
+}
+
+.separator-block.bottom-margin-30 {
+  margin-bottom: 30px;
+}
+
+.separator-block.bottom-margin-35 {
+  margin-bottom: 35px;
+}
+
+.separator-block.bottom-margin-40 {
+  margin-bottom: 40px;
+}
+
+.separator-block.bottom-margin-45 {
+  margin-bottom: 45px;
+}
+
+.separator-block.bottom-margin-50 {
+  margin-bottom: 50px;
+}
+
+.separator-block.bottom-margin-60 {
+  margin-bottom: 60px;
+}
+
+/*separator width*/
+.separator-block.line-width-10 hr {
+  width: 10%;
+}
+
+.separator-block.line-width-20 hr {
+  width: 20%;
+}
+
+.separator-block.line-width-30 hr {
+  width: 30%;
+}
+
+.separator-block.line-width-40 hr {
+  width: 40%;
+}
+
+.separator-block.line-width-50 hr {
+  width: 50%;
+}
+
+.separator-block.line-width-60 hr {
+  width: 60%;
+}
+
+.separator-block.line-width-70 hr {
+  width: 70%;
+}
+
+.separator-block.line-width-80 hr {
+  width: 80%;
+}
+
+.separator-block.line-width-90 hr {
+  width: 90%;
+}
+
+.separator-block.line-width-100 hr {
+  width: 100%;
+}

@@ -1,13 +1,5 @@
 $(document).ready(function () {
-// phone animation when document is ready;
-$('.pagename-index .phone-block.animation').removeClass('animation');
-
-// .slide-button
-$('.slide-button').click(function(){
-  $(this).parents('.main-frst').toggleClass('active');
-});
-
-// animation counter func
+//counter animation func
 function NumCount( priceStart ,priceEnd,thisEL ){
   var numbStart = priceStart;
       $({ numberValue: priceEnd}).animate({numberValue: numbStart}, {
@@ -18,39 +10,492 @@ function NumCount( priceStart ,priceEnd,thisEL ){
             thisEL.parents('.price-card').find('.num-js').html(val.toFixed(0));
           }
         });
-}
+};
 //
-//price count animation  on click 'switcher' and change "hover" class; 
-$('.switcher').click(function(){
-  var thisEL = $(this),
-      propChecked = thisEL.find('.switcher__input').prop('checked'),
-      disabledPrice = +thisEL.find('.js-switcher-disabled').attr('data-price'),
-      checkedPrice = +thisEL.find('.js-switcher-checked').attr('data-price');
 
-      if( thisEL.hasClass('hover')) {
+//price count animation  on click 'switcher', change class="hover" and change tab  ; 
+$(document).on('click','.switcher',function(){
+  var thisEL = $(this),
+      propChecked = thisEL.find('.switcher__input').prop('checked');
+
+      if( thisEL.hasClass('hover') ) {
           thisEL.removeClass('hover');
           thisEL.mouseout(function(){
             thisEL.addClass('hover')
           });
       };
 
-      if( propChecked == true ) {
-          NumCount(checkedPrice,disabledPrice,thisEL);
-      }else{
-          NumCount(disabledPrice,checkedPrice,thisEL)
+      if( thisEL.hasClass('js-price-animation') ) {
+          var disabledPrice = +thisEL.find('.js-switcher-disabled').attr('data-price'),
+              checkedPrice = +thisEL.find('.js-switcher-checked').attr('data-price');
+
+              if( propChecked == true ) {
+                  NumCount( checkedPrice, disabledPrice, thisEL);
+              }else{
+                  NumCount( disabledPrice, checkedPrice, thisEL)
+              };
+      }else if( thisEL.hasClass('js-tab-switcher') ){
+                if( propChecked == true ){
+                    thisEL.parents('.js-switcher-parent').addClass('active')
+                }else{
+                    thisEL.parents('.js-switcher-parent').removeClass('active')
+                }
+                
       };
+
 });
 
-// modal
-$('.modal-button').click(function(){
-  $('.modal.modal-contact').addClass('active');
+// click function
+(function(){
+
+  // close modal
+  $('.close-modal').click(function(){
+    $(this).parents('.modal').removeClass('active');
+    $('body,html').removeClass('overflow')
+  });
+
+  // header support dropdown
+  $('.js-dropdown-button').click(function(){
+    $(this).parents('.header-list__item.dropdown').toggleClass('active');
+  });
+
+  //header authentication dropdown
+  $('.header-authentication__content').click(function(){
+    $(this).parents('.header-authentication').toggleClass('active');
+  });
+
+  // copy to clipboard
+
+  $('.js-copy').click(function(){
+    var text = $(this).parents('.form-block__label').find('.form-block__input');
+  
+        text.attr('disabled', false).select();
+        document.execCommand("copy");
+        text.attr('disabled', true);
+        window.getSelection().removeAllRanges();
+
+    //var copyText = $(this).parents('.form-block__label').find('.form-block__input').val();
+
+    // navigator.clipboard.writeText(copyText). then (function() {
+    //     // success
+    // }, function (err) {
+    //     //error
+    // });
+  });
+
+  function radioButton(element,item){
+    var clickElement = element,
+        thisAccess = $(item).attr('data-access');
+
+        if( thisAccess != 0 ) {
+            $('.modal.active '+clickElement+'').removeClass('active');
+            $(item).addClass('active');
+        };
+  };
+
+  // show buy a pro
+ $(document).on('click','[data-access="0"]', function(){
+    modalTemplatesAppend('pro-access');
+    $('.modal.active .js-save-modal').hide();
+ });
+
+  // align-block__content click
+  $(document).on('click','.align-block__content',function(){
+    radioButton('.align-block__content',this);
+  });
+
+  // social-list__item click
+  $(document).on('click','.social-list__item',function(){
+    radioButton('.social-list__item',this);
+  });
+
+  // text-style__circle click
+  $(document).on('click','.text-style__circle',function(){
+    radioButton('.text-style__circle',this);
+  });
+  // js-signature__checkbox click
+
+  $(document).on('click','.js-signature__checkbox',function(){
+    var propChecked = $(this).prop('checked');
+
+        if( propChecked == true ) {
+            $('.modal.active .js-signature').removeClass('disabled');
+        }else{
+            $('.modal.active .js-signature').addClass('disabled');
+        }
+  });
+}());
+//
+
+
+function modalTemplatesAppend(target){
+  var contentType = $('.modal-templates').find('.modal-templates__content[data-target='+target+']');
+  $('.js-appendEl-holder').html("");
+  $('.modal.constructor-modal').addClass('active');
   $('body,html').addClass('overflow');
+  contentType.clone().appendTo('.js-appendEl-holder');
+  $('.modal.active').attr('data-content-type',contentType.attr('data-type'));
+};
+
+// change styles on click "style-tab__block" and make it radio button
+  $('.style-tab__block').click(function(){
+    var thisEL = $(this);
+
+        if( thisEL.hasClass('js-block-radio') ) {
+            $('.js-block-radio').removeClass('active');
+            thisEL.addClass('active');
+        }else if( thisEL.hasClass('js-modal-templates') ){
+                  var thisID = thisEL.attr('id');
+
+                      modalTemplatesAppend(thisID);
+                      $('.modal.active').attr('data-current',thisID).end().find('.js-save-modal').show();
+        };
+  });
+
+// custom select 
+$('.wrap-drop').each(function(key,item){
+  var selectedText = $(item).find('.selected').text();
+
+      $(item).find('.selected-el span').text(selectedText);
+      $(item).find('li[data-access=0]:first').css({
+        'border-radius':'24px 24px 0 0',
+      });
+});
+$(document).on('click','.wrap-drop',function(){
+  $('.wrap-drop.active').not(this).css({
+    "transition-delay": "0s",
+  });
+  $('.wrap-drop').not(this).removeClass('active');
+  $(this).toggleClass('active');
+});
+$(document).on('click','.drop>li',function(){
+  var attribute = $(this).attr('data-access');
+
+      if( attribute != 0 ) {
+          var thisText = $(this).text();
+
+              $(this).addClass('selected').siblings().removeClass('selected');
+              $(this).parents('.wrap-drop').find('.selected-el span').text(thisText);
+      }
+});
+//
+
+$(document).on('click', function(event){
+  var if_thisbutton = $(event.target).hasClass('wrap-drop.active')? true: $(event.target).parents('.wrap-drop.active').length > 0? true: false;
+      
+      if( !if_thisbutton ){
+          $('.wrap-drop').removeClass('active');
+      }
+});
+// 
+
+// tooltip
+  $(document).on('click','.tooltip-button__js',function(){
+    var tooltipStatus = $(this).attr('data-tooltip'),
+        thisEl = $(this);
+        if( tooltipStatus != 0 ){
+            var thisText = thisEl.attr('data-tooltip__text');
+                
+                $('.tooltip').toggleClass('active').find('.text').html(thisText);
+                
+                function givePosition(){
+                  if( $('.tooltip').hasClass("active") ) {
+                      var thisOffset = thisEl.offset(),
+                          thisHeight = thisEl.height()+14,
+                          thisWidth = thisEl.outerWidth()/2 - $('.tooltip').outerWidth()/2;
+
+                          $('.tooltip').css({
+                            "top": (thisOffset.top +thisHeight)+"px" ,
+                            'left':(thisOffset.left +thisWidth)+"px",
+                          });
+                      };
+                };
+                givePosition();
+
+                $(window).resize(function(){
+                  givePosition();
+                });
+
+                if( $('.modal').hasClass('active') ) {
+                    $('.modal').scroll(function(){
+                      givePosition();
+                    });
+                  };
+        };
+  });
+// disable tooltip on click document
+$(document).on('click', function(event){
+  var if_neededelement = $(event.target).parent('.tooltip').length;
+  var if_thisbutton = $(event.target).hasClass('tooltip-button__js')? true: $(event.target).parents('.tooltip-button__js').length > 0? true: false;
+      if(!if_thisbutton && !if_neededelement){
+        $('.tooltip').removeClass('active');
+      }
 });
 
-// close modal
-$('.close-modal').click(function(){
-  $(this).parents('.modal').removeClass('active');
-  $('body,html').removeClass('overflow')
+// upload img
+function readURL(input) {
+  if( input.files && input.files[0] ) {
+      var reader = new FileReader();
+
+          reader.onload = function(e) {
+              $(input).parents('.file-uploader').find('.js-img-holder').attr('style','background-image: url('+e.target.result +')');
+              $(input).parents('.file-uploader').find('.js-img-holder').hide();
+              $(input).parents('.file-uploader').find('.js-img-holder').fadeIn(650);
+          }
+          reader.readAsDataURL(input.files[0]);
+  }
+};
+
+$(document).on("change", ".js-input-file", function() {
+  readURL(this);
+  $(this).attr('disabled',true);
+  $(this).parents('.js-uploader').addClass('active').hide().fadeIn(650).css({
+    'order':'-1',
+  });
+});
+
+$(document).on('click','.remove-button', function(){
+  $(this).parents('.js-uploader').remove();
+  $(document).find('.gallery-card__stock').clone().removeClass('gallery-card__stock').appendTo('.modal.active .gallery-block .template-personal').hide().fadeIn(650);
+
+});
+//
+
+// // save modal and append content to visual constructor
+// $(document).on('click','.js-save-modal',function(){
+//   var parentsContentType = $(this).parents('.modal.active').attr('data-content-type'),
+//       appendContent;
+      
+//       // avatar append
+//       if( parentsContentType == 'Avatar') {
+//         var elementLength = $('.slide-element.self').length;
+//           if( elementLength <= 3 ){
+//               var bgSource = $('.modal.active .js-img-holder').css('background-image'),
+//                   imageSize = $('.modal.active .js-image-size li.selected').attr('data-size'),
+//                   signatureCheckbox = $('.modal.active .js-signature__checkbox').prop('checked'),
+//                   fontSize = $('.modal.active .js-font-size li.selected').attr('data-size'),
+//                   inputText = $('.modal.active .form-block__input').val();
+//                   signature = (signatureCheckbox == true)? '<p class="self__name">'+inputText+'</p>':'',
+//                   className = ' img'+imageSize+' fs'+fontSize;
+
+//               bgSource = bgSource.replace('url(','').replace(')','').replace(/\"/gi, "");
+
+//                   appendContent = '<div class="slide-element self '+className+'">\
+//                                 <button class="slide-element__button"><img src="../img/slide-element__button.svg" alt=""></button>\
+//                                 <div class="self__photo" style="background-image: url('+bgSource+');"></div>\
+//                                 '+signature+'\
+//                                </div>';
+//           }else{
+//             //сообщение об ошибке
+//           }
+//       }  //button append
+//       else if( parentsContentType == 'Button') {
+//                var buttonAction = $('.modal.active .js-button-action li.selected').attr('data-action'),
+//                    buttonLink = $('.modal.active .js-button-link .form-block__input').val(),
+//                    buttonName = $('.modal.active .js-button-name .form-block__input').val(),
+//                    fontSize = $('.modal.active .js-font-size li.selected').attr('data-size'),
+//                    fontFamily = $('.modal.active .js-font-family li.selected').attr('data-font'),
+//                    textStyle = $('.modal.active .js-font-style .text-style__circle.active').attr('data-style'),
+//                    className = ' fs'+fontSize+ ' ff-'+fontFamily+ ' text-style-'+textStyle,
+//                    appendContent = '<div class="slide-element link-block '+className+'">\
+//                                       <button class="slide-element__button"><img src="../img/slide-element__button.svg" alt=""></button>\
+//                                       <a href="'+buttonAction+buttonLink+'" class="button-style button-style--black">'+buttonName+'</a>\
+//                                     </div>';
+
+               
+//       } // text append
+//       else if( parentsContentType == 'Text') {
+//                var fontFamily = $('.modal.active .js-font-family li.selected').attr('data-font'),
+//                    fontSize = $('.modal.active .js-font-size li.selected').attr('data-size'),
+//                    textAlign = $('.modal.active .js-text-align .align-block__content.active').attr('data-align'),
+//                    textareaText = $('.modal.active .js-textarea-text .form-block__input').val(),
+//                    textStyle = $('.modal.active .js-font-style .text-style__circle.active').attr('data-style'),
+//                    className = ' fs'+fontSize+ ' ff-'+fontFamily+ ' text-style-'+textStyle+' text-align-'+textAlign,
+//                    appendContent = '<div class="slide-element text-block '+className+'">\
+//                                       <button class="slide-element__button"><img src="../img/slide-element__button.svg" alt=""></button>\
+//                                       <p class="text">'+textareaText+'</p>\
+//                                     </div>';
+
+
+//       } // separator append
+//       else if( parentsContentType == 'Separator') {
+//                var lineType = $('.modal.active .js-line-type li.selected').attr('data-line-type'),
+//                    hiddenLine = ($('.modal.active .js-hidden-line .hidden-line__checkbox').prop('checked') == true)? 'hidden' : 'show',
+//                    topMargin = $('.modal.active .js-top-margin li.selected').attr('data-top'),
+//                    bottomMargin = $('.modal.active .js-bottom-margin li.selected').attr('data-bottom'),
+//                    lineWidth = $('.modal.active .js-line-width li.selected').attr('data-width'),
+//                    className = ' line-type-'+lineType+ ' line-'+hiddenLine+ ' top-margin-'+topMargin+' bottom-margin-'+bottomMargin+' line-width-'+lineWidth,
+//                    appendContent = '<div class="slide-element separator-block '+className+'">\
+//                                       <button class="slide-element__button"><img src="../img/slide-element__button.svg" alt=""></button>\
+//                                       <hr>\
+//                                     </div>';
+
+
+//       }// video append
+//       else if( parentsContentType == 'Video') {
+//                var videoSource = $('.modal.active .js-video-src .form-block__input').val();
+//                var appendContent = '<div class="slide-element video-block">\
+//                                       <button class="slide-element__button"><img src="../img/slide-element__button.svg" alt=""></button>\
+//                                       <div class="video-block__iframe">\
+//                                         <iframe src="'+getVideoId(videoSource)+'" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>\
+//                                       </div>\
+//                                     </div>';
+
+
+//       };
+
+//    $('.page-wrapper').append(appendContent);
+//    $('.modal,body,html').removeClass('active overflow');
+// });
+
+
+
+// save modal and append content to visual constructor
+$(document).on('click','.js-save-modal',function(){
+  var parentsContentType = $(this).parents('.modal.active').attr('data-content-type');
+  window['get'+parentsContentType+'Data']();
 });
 
 });//document ready;
+
+// avatar obj
+function getAvatarData(){
+  var bgSource = $('.modal.active .js-img-holder').css('background-image').replace('url(','').replace(')','').replace(/\"/gi, ""),
+      signatureCheckbox = $('.modal.active .js-signature__checkbox').prop('checked'),
+      signatureText = $('.modal.active .form-block__input').val(),
+      data = {
+        type: 'avatar',
+        imageSource: bgSource,
+        imageSize: $('.modal.active .js-image-size li.selected').attr('data-size'),
+        fontSize: $('.modal.active .js-font-size li.selected').attr('data-size'),
+        signature: (signatureCheckbox == true)? (signatureText == "")? null : signatureText : null,
+      };
+
+  console.log(data);
+
+  ajaxContentGet(data);
+};
+// button obj
+function getButtonData(){
+  var buttonLinkText = $('.modal.active .js-button-link .form-block__input').val(),
+      buttonNameText = $('.modal.active .js-button-name .form-block__input').val(),
+      textStyleAttr = $('.modal.active .js-font-style .text-style__circle.active').attr('data-style'),
+      data = {
+          type: 'button',
+          buttonAction: $('.modal.active .js-button-action li.selected').attr('data-action'),
+          buttonLink: (buttonLinkText == "")? null : buttonLinkText,
+          fontSize : $('.modal.active .js-font-size li.selected').attr('data-size'),
+          fontFamily : $('.modal.active .js-font-family li.selected').attr('data-font'),
+          textStyle : (textStyleAttr === undefined)? null : textStyleAttr,
+          buttonName : (buttonNameText == "")? null : buttonNameText,
+      };
+  console.log(data);
+
+  ajaxContentGet(data);
+};
+// text obj
+function getTextData(){
+  var textStyleAttr = $('.modal.active .js-font-style .text-style__circle.active').attr('data-style'),
+      textareaText = $('.modal.active .js-textarea-text .form-block__input').val(),
+      data = {
+        type: 'text',
+        fontFamily : $('.modal.active .js-font-family li.selected').attr('data-font'),
+        fontSize : $('.modal.active .js-font-size li.selected').attr('data-size'),
+        textAlign : $('.modal.active .js-text-align .align-block__content.active').attr('data-align'),
+        textarea: (textareaText == "")? null : textareaText ,
+        textStyle : (textStyleAttr === undefined)? null : textStyleAttr ,
+      };
+
+  console.log(data);
+
+  ajaxContentGet(data);
+};
+// separator obj
+function getSeparatorData(){
+  var data = {
+        type: 'separator',
+        hiddenLine: $('.modal.active .js-hidden-line .hidden-line__checkbox').prop('checked'),
+        lineType: $('.modal.active .js-line-type li.selected').attr('data-line-type'),
+        topMargin: $('.modal.active .js-top-margin li.selected').attr('data-top'),
+        bottomMargin: $('.modal.active .js-bottom-margin li.selected').attr('data-bottom'),
+        lineWidth: $('.modal.active .js-line-width li.selected').attr('data-width'),
+
+      };
+
+  console.log(data);
+
+  ajaxContentGet(data);
+};
+// messenger obj
+function getMessengerData(){
+  var textStyleAttr = $('.modal.active .js-font-style .text-style__circle.active').attr('data-style'),
+      buttonNameText = $('.modal.active .js-button-name .form-block__input').val(),
+      linkValueText = $('.modal.active .js-link-value.active .form-block__input').val(),
+      data = {
+        type: 'messenger',
+        selectedMessenger: $('.modal.active .js-selected-messenger .social-list__item.active').attr('data-selected'),
+        fontFamily : $('.modal.active .js-font-family li.selected').attr('data-font'),
+        fontSize : $('.modal.active .js-font-size li.selected').attr('data-size'),
+        textStyle : (textStyleAttr === undefined)? null : textStyleAttr ,
+        buttonName : (buttonNameText == "")? null : buttonNameText,
+        linkValue : (linkValueText === undefined || linkValueText === "")? null : linkValueText,
+      };
+
+  console.log(data);
+
+  ajaxContentGet(data);
+};
+// social obj
+function getSocialData(){
+  var textStyleAttr = $('.modal.active .js-font-style .text-style__circle.active').attr('data-style'),
+      buttonNameText = $('.modal.active .js-button-name .form-block__input').val(),
+      linkValueText = $('.modal.active .js-link-value .form-block__input').val(),
+      data = {
+        type: 'social',
+        selectedMessenger: $('.modal.active .js-selected-messenger .social-list__item.active').attr('data-selected'),
+        fontFamily : $('.modal.active .js-font-family li.selected').attr('data-font'),
+        fontSize : $('.modal.active .js-font-size li.selected').attr('data-size'),
+        textStyle : (textStyleAttr === undefined)? null : textStyleAttr ,
+        buttonName : (buttonNameText == "")? null : buttonNameText,
+        linkValue : (linkValueText === undefined || linkValueText === "")? null : linkValueText,
+      };
+
+  console.log(data);
+
+  ajaxContentGet(data);
+};
+// // get video ID
+function getVideoId( url ) {
+  var match = /vimeo.*\/(\d+)/i.exec( url );
+  // vimeo id
+  if ( match ) {
+    return 'https://player.vimeo.com/video/'+match[1];
+  }// youtube id
+  else{
+    var regExp = /^.*(youtu\.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+    var match = url.match(regExp);
+    if (match && match[2].length == 11) {
+      return 'https://www.youtube.com/embed/'+match[2];
+    } else {
+      return null;
+    }
+  }
+};
+
+function getVideoData(){
+   var videoSrc = $('.modal.active .js-video-src .form-block__input').val();
+      var data = {
+        type: 'video',
+        videoLink: getVideoId(videoSrc),
+      };
+
+  console.log(data);
+  ajaxContentGet(data); 
+};
+$( function() {
+    $( ".page-wrapper" ).sortable({axis:'y'});
+    $( ".page-wrapper" ).disableSelection();
+  } );
+function ajaxContentGet(data){
+  // AJAX CALL
+};
