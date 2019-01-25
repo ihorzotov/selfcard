@@ -174,6 +174,167 @@ ul {
   font-weight: 500;
 }
 
+@font-face {
+  font-family: 'GothamPro';
+  src: url("../fonts/GothamPro/GothamPro-Bold.ttf");
+  font-style: medium;
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: 'icomoon';
+  src: url("../fonts/icomoon/icomoon.ttf?3z1puj") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-Insta-mono:before {
+  content: "\e91b";
+  color: #c4329a;
+  background: -webkit-radial-gradient(33% 100% circle, #FED373 4%, #F15245 30%, #D92E7F 62%, #9B36B7 85%, #515ECF);
+  background: -webkit-radial-gradient(33% 100%, circle, #FED373 4%, #F15245 30%, #D92E7F 62%, #9B36B7 85%, #515ECF);
+  background: -o-radial-gradient(33% 100%, circle, #FED373 4%, #F15245 30%, #D92E7F 62%, #9B36B7 85%, #515ECF);
+  background: radial-gradient(circle at 33% 100%, #FED373 4%, #F15245 30%, #D92E7F 62%, #9B36B7 85%, #515ECF);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -webkit-transition: radial-gradient .3s;
+  -o-transition: radial-gradient .3s;
+  transition: radial-gradient .3s;
+}
+
+.icon-vk-s:before {
+  content: "\e918";
+  color: #4680c2;
+}
+
+.icon-fb-s:before {
+  content: "\e919";
+  color: #3a5897;
+}
+
+.icon-youtube-s:before {
+  content: "\e916";
+  color: #f00;
+}
+
+.icon-ok:before {
+  content: "\e91a";
+  color: #ed812b;
+}
+
+.icon-tw-s:before {
+  content: "\e917";
+  color: #1da1f2;
+}
+
+.icon-copy:before {
+  content: "\e901";
+}
+
+.icon-person:before {
+  content: "\e902";
+}
+
+.icon-whatsapp:before {
+  content: "\e903";
+  color: #25d366;
+}
+
+.icon-vk:before {
+  content: "\e904";
+  color: #4680c2;
+}
+
+.icon-viber:before {
+  content: "\e905";
+  color: #665cac;
+}
+
+.icon-trash:before {
+  content: "\e906";
+}
+
+.icon-skype:before {
+  content: "\e907";
+  color: #00aff0;
+}
+
+.icon-telegram:before {
+  content: "\e908";
+  color: #1b7fba;
+}
+
+.icon-facebook:before {
+  content: "\e909";
+  color: #0084ff;
+}
+
+.icon-Check:before {
+  content: "\e900";
+}
+
+.icon-check-1:before {
+  content: "\e915";
+}
+
+.icon-save:before {
+  content: "\e90a";
+}
+
+.icon-plus:before {
+  content: "\e90b";
+}
+
+.icon-menu-down:before {
+  content: "\e90c";
+}
+
+.icon-format-align-right:before {
+  content: "\e90d";
+}
+
+.icon-format-align-left:before {
+  content: "\e90e";
+}
+
+.icon-format-align-center:before {
+  content: "\e90f";
+}
+
+.icon-diamond-stone:before {
+  content: "\e910";
+}
+
+.icon-close:before {
+  content: "\e911";
+}
+
+.icon-chevron-down:before {
+  content: "\e912";
+}
+
+.icon-bell:before {
+  content: "\e913";
+}
+
+.icon-arrow:before {
+  content: "\e914";
+}
+
 body.overflow, html.overflow {
   height: auto;
   position: relative;
@@ -323,12 +484,22 @@ input, button, textarea {
 .section-title i {
   font-size: 36px;
   margin-right: 25px;
+  vertical-align: middle;
   color: #f78f10;
 }
 
 .section-title.section-title--small {
   font-size: 30px;
   text-transform: none;
+}
+
+.section-title.section-title--lowercase {
+  text-transform: none;
+  text-align: center;
+}
+
+.section-title.section-title--lowercase q {
+  color: #ff7333;
 }
 
 .section-description {
@@ -402,6 +573,24 @@ input, button, textarea {
   font-family: 'GothamPro', sans-serif;
   font-size: 36px;
   text-transform: uppercase;
+  position: relative;
+}
+
+.price-card__flag:after {
+  content: '';
+  display: block;
+  width: 48px;
+  height: 22px;
+  -webkit-border-radius: 11px;
+  border-radius: 11px;
+  background-image: url(../img/self1.png);
+  background-repeat: no-repeat;
+  -webkit-background-size: 25px 25px;
+  background-size: 25px;
+  background-position: 50% 50%;
+  position: absolute;
+  right: 0;
+  top: 4px;
 }
 
 .price-card__flag sup {
@@ -412,6 +601,10 @@ input, button, textarea {
 
 .price-card__flag.price-card__flag--light {
   background: #5db3e6;
+}
+
+.price-card__flag.price-card__flag--light:after {
+  display: none;
 }
 
 .price-card__list {

@@ -50,8 +50,9 @@ $(document).on('click','.switcher',function(){
 
   // close modal
   $('.close-modal').click(function(){
-    $(this).parents('.modal').removeClass('active');
-    $('body,html').removeClass('overflow')
+    $(this).parents('.modal').removeClass('active changing');
+    $('body,html').removeClass('overflow');
+    $('.slide-element').removeClass('changing')
   });
 
   // header support dropdown
@@ -124,9 +125,15 @@ $(document).on('click','.switcher',function(){
             $('.modal.active .js-signature').addClass('disabled');
         }
   });
+
+  
 }());
 //
-
+// questions-block click
+  $('.questions-block__title').click(function(){
+    $('.questions-block').not($(this).parents('.questions-block')).removeClass('active');
+    $(this).parents('.questions-block').toggleClass('active');
+  });
 
 function modalTemplatesAppend(target){
   var contentType = $('.modal-templates').find('.modal-templates__content[data-target='+target+']');
@@ -137,7 +144,7 @@ function modalTemplatesAppend(target){
   $('.modal.active').attr('data-content-type',contentType.attr('data-type'));
 };
 
-// change styles on click "style-tab__block" and make it radio button
+// change styles on click "style-tab__block", make it radio button and open modal with templates;
   $('.style-tab__block').click(function(){
     var thisEL = $(this);
 
@@ -151,6 +158,16 @@ function modalTemplatesAppend(target){
                       $('.modal.active').attr('data-current',thisID).end().find('.js-save-modal').show();
         };
   });
+// open modal with templates on click slide-element;
+$(document).on('click','.slide-element',function(){
+  var thisData = $(this).data('target');
+
+      $(this).addClass('changing');
+      modalTemplatesAppend(thisData);
+      $('.modal.active').addClass('changing').attr('data-current',thisData).end().find('.js-save-modal').show();
+      
+});
+//
 
 // custom select 
 $('.wrap-drop').each(function(key,item){
@@ -281,7 +298,7 @@ $(document).on('click','.remove-button', function(){
 //               bgSource = bgSource.replace('url(','').replace(')','').replace(/\"/gi, "");
 
 //                   appendContent = '<div class="slide-element self '+className+'">\
-//                                 <button class="slide-element__button"><img src="../img/slide-element__button.svg" alt=""></button>\
+//                                 <div class="slide-element__button"><img src="../img/slide-element__button.svg" alt=""></div>\
 //                                 <div class="self__photo" style="background-image: url('+bgSource+');"></div>\
 //                                 '+signature+'\
 //                                </div>';
@@ -298,7 +315,7 @@ $(document).on('click','.remove-button', function(){
 //                    textStyle = $('.modal.active .js-font-style .text-style__circle.active').attr('data-style'),
 //                    className = ' fs'+fontSize+ ' ff-'+fontFamily+ ' text-style-'+textStyle,
 //                    appendContent = '<div class="slide-element link-block '+className+'">\
-//                                       <button class="slide-element__button"><img src="../img/slide-element__button.svg" alt=""></button>\
+//                                       <div class="slide-element__button"><img src="../img/slide-element__button.svg" alt=""></div>\
 //                                       <a href="'+buttonAction+buttonLink+'" class="button-style button-style--black">'+buttonName+'</a>\
 //                                     </div>';
 
@@ -312,7 +329,7 @@ $(document).on('click','.remove-button', function(){
 //                    textStyle = $('.modal.active .js-font-style .text-style__circle.active').attr('data-style'),
 //                    className = ' fs'+fontSize+ ' ff-'+fontFamily+ ' text-style-'+textStyle+' text-align-'+textAlign,
 //                    appendContent = '<div class="slide-element text-block '+className+'">\
-//                                       <button class="slide-element__button"><img src="../img/slide-element__button.svg" alt=""></button>\
+//                                       <div class="slide-element__button"><img src="../img/slide-element__button.svg" alt=""></div>\
 //                                       <p class="text">'+textareaText+'</p>\
 //                                     </div>';
 
@@ -326,16 +343,46 @@ $(document).on('click','.remove-button', function(){
 //                    lineWidth = $('.modal.active .js-line-width li.selected').attr('data-width'),
 //                    className = ' line-type-'+lineType+ ' line-'+hiddenLine+ ' top-margin-'+topMargin+' bottom-margin-'+bottomMargin+' line-width-'+lineWidth,
 //                    appendContent = '<div class="slide-element separator-block '+className+'">\
-//                                       <button class="slide-element__button"><img src="../img/slide-element__button.svg" alt=""></button>\
+//                                       <div class="slide-element__button"><img src="../img/slide-element__button.svg" alt=""></div>\
 //                                       <hr>\
 //                                     </div>';
 
+
+//       }// gallery append
+//       else if( parentsContentType == 'Gallery') {
+//                var checkedStatus = $('.modal.active .resolution__switcher .switcher__input').prop('checked');
+//                    resolutionVal = (checkedStatus == false)? $('.modal.active .resolution__switcher .switcher-text:first').text() : $('.modal.active .resolution__switcher .switcher-text:last').text(),
+//                    linkHolder=[],
+//                    sliderChange = $('.modal.active .slider-change .slider-change-prop').prop("checked"),
+//                    //sliderChangeVal = (sliderChange == false)? null : sliderChange,
+//                    sliderAutoplay = $('.modal.active .js-autoplay-time li.selected').data('time'),
+//                    asd = (sliderChange == false)? 0: sliderAutoplay;
+
+//                     $('.modal.active .js-uploader.active').each(function(key,item){
+//                       var bgSource = $(item).find('.js-img-holder').css('background-image').replace('url(','').replace(')','').replace(/\"/gi, "");
+//                           linkHolder.push(bgSource);
+//                     });
+
+//                 var appendContent = '<div class="slide-element gallery-block small">\
+//                                       <div class="slide-element__button"><img src="../img/slide-element__button.svg" alt=""></div>\
+//                                       <div class="gallery-slider" data-autoplay="'+sliderChange+'"  data-autoplay-time="'+asd+'">\
+//                                         <div class="gallery-slider__holder">\
+//                                           <div class="gallery-slider__element" style="background-image: url(../img/telegram.svg);"></div>\
+//                                         </div>\
+//                                         <div class="gallery-slider__holder">\
+//                                           <div class="gallery-slider__element" style="background-image: url(../img/telegram.svg);"></div>\
+//                                         </div>\
+//                                         <div class="gallery-slider__holder">\
+//                                           <div class="gallery-slider__element" style="background-image: url(../img/telegram.svg);"></div>\
+//                                         </div>\
+//                                       </div>\
+//                                     </div>';
 
 //       }// video append
 //       else if( parentsContentType == 'Video') {
 //                var videoSource = $('.modal.active .js-video-src .form-block__input').val();
 //                var appendContent = '<div class="slide-element video-block">\
-//                                       <button class="slide-element__button"><img src="../img/slide-element__button.svg" alt=""></button>\
+//                                       <div class="slide-element__button"><img src="../img/slide-element__button.svg" alt=""></div>\
 //                                       <div class="video-block__iframe">\
 //                                         <iframe src="'+getVideoId(videoSource)+'" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>\
 //                                       </div>\
@@ -348,12 +395,32 @@ $(document).on('click','.remove-button', function(){
 //    $('.modal,body,html').removeClass('active overflow');
 // });
 
+function initSliders(){
+  $('.slide-element .gallery-slider').each(function(key,item){
+    var autoplayStatus = $(item).data('autoplay'),
+        autoplayTime = +$(item).data('autoplay-time')*1000;
+
+        $(item).slick({
+          infinite: false,
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          dots:true,
+          arrows:false,
+          autoplay: autoplayStatus,
+          autoplaySpeed: autoplayTime,
+        });
+        
+  });
+}
+initSliders();
 
 
-// save modal and append content to visual constructor
+//save modal and append content to visual constructor
 $(document).on('click','.js-save-modal',function(){
   var parentsContentType = $(this).parents('.modal.active').attr('data-content-type');
   window['get'+parentsContentType+'Data']();
+
+  $('.modal,body,html').removeClass('active overflow changing');
 });
 
 });//document ready;
@@ -464,6 +531,32 @@ function getSocialData(){
 
   ajaxContentGet(data);
 };
+//gallery obj
+function getGalleryData(){
+  var checkedStatus = $('.modal.active .resolution__switcher .switcher__input').prop('checked');
+      resolutionVal = (checkedStatus == false)? $('.modal.active .resolution__switcher .switcher-text:first').attr('data-size') : $('.modal.active .resolution__switcher .switcher-text:last').attr('data-size'),
+      linkHolder=[],
+      sliderChange = $('.modal.active .slider-change .slider-change-prop').prop("checked"),
+      //sliderChangeVal = (sliderChange == false)? null : sliderChange,
+      sliderAutoplay = $('.modal.active .js-autoplay-time li.selected').data('time');
+
+      $('.modal.active .js-uploader.active').each(function(key,item){
+        var bgSource = $(item).find('.js-img-holder').css('background-image').replace('url(','').replace(')','').replace(/\"/gi, "");
+            linkHolder.push(bgSource);
+      });
+
+      data = {
+        type: 'gallery',
+        resolution: resolutionVal,
+        galleryLinks:linkHolder,
+        autoplay: sliderChange,
+        autoplayTime: (sliderChange == false)? 0 : sliderAutoplay,
+      }
+
+  console.log(data);
+
+  ajaxContentGet(data);
+};
 // // get video ID
 function getVideoId( url ) {
   var match = /vimeo.*\/(\d+)/i.exec( url );
@@ -492,10 +585,7 @@ function getVideoData(){
   console.log(data);
   ajaxContentGet(data); 
 };
-$( function() {
-    $( ".page-wrapper" ).sortable({axis:'y'});
-    $( ".page-wrapper" ).disableSelection();
-  } );
+
 function ajaxContentGet(data){
   // AJAX CALL
 };

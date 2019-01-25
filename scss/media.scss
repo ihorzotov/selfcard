@@ -110,4 +110,15 @@
       color: #fff;
     }
   }
+  .questions-block__title{
+    &:hover{
+      border:2px solid #1d9ae5;
+    }
+  }
+  .remove-button{
+    &:hover{
+      background :#ff5447;
+      color: #fff;
+    }
+  }
 }

@@ -6,6 +6,7 @@
     <title>Document</title>
     <link rel="icon" href="" type="image/png">
     <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/slick-theme.css">
     <link rel="stylesheet" href="../css/account.css">
     <link rel="stylesheet" href="../css/page.css">
     <link rel="stylesheet" href="../css/media.css">
@@ -49,7 +50,7 @@
         </div>
       </div>
       <div class="header-alert unread">
-        <i>1</i>
+        <i class="icon-bell"></i>
       </div>
     </div>
   </header>
@@ -57,7 +58,7 @@
     <div class="wrapper">
       <div class="constructor">
         <div class="constructor-save">
-          <button class="constructor-save__button"><i>1</i></button>
+          <button class="constructor-save__button"><i class="icon-save"></i></button>
         </div>
         <div class="constructor-phone">
           <div class="constructor-phone__image constructor-phone__top" style="background-image: url(../img/phone-top.png);"></div> 
@@ -65,39 +66,61 @@
           <div class="constructor-phone__image constructor-phone__bottom" style="background-image: url(../img/phone-bottom.png);"></div> 
           <div class="constructor-phone__content">
             <div class="page-wrapper">
-              <div class="slide-element self">
-                <button class="slide-element__button"><img src="../img/slide-element__button.svg" alt=""></button>
+              <div class="slide-element gallery-block small" data-target="modal-gallery">
+                <div class="slide-element__button"><img src="../img/slide-element__button.svg" alt=""></div>
+                <div class="gallery-slider" data-autoplay="false"  data-autoplay-time="0">
+                  <div class="gallery-slider__holder">
+                    <div class="gallery-slider__element" style="background-image: url('../img/telegram.svg');"></div>
+                  </div>
+                  <div class="gallery-slider__holder">
+                    <div class="gallery-slider__element" style="background-image: url('../img/telegram.svg');"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="slide-element gallery-block small" data-target="modal-gallery">
+                <div class="slide-element__button"><img src="../img/slide-element__button.svg" alt=""></div>
+                <div class="gallery-slider" data-autoplay="true"  data-autoplay-time="1">
+                  <div class="gallery-slider__holder">
+                    <div class="gallery-slider__element" style="background-image: url('../img/telegram.svg');"></div>
+                  </div>
+                  <div class="gallery-slider__holder">
+                    <div class="gallery-slider__element" style="background-image: url('../img/telegram.svg');"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="slide-element self" data-target="modal-avatar">
+                <div class="slide-element__button"><img src="../img/slide-element__button.svg" alt=""></div>
                 <div class="self__photo" style="background-image: url(../img/selfphoto.png);"></div>
                 <p class="self__name">@vvvlad</p>
               </div>
-              <div class="slide-element text-block">
-                <button class="slide-element__button"><img src="../img/slide-element__button.svg" alt=""></button>
+              <div class="slide-element text-block" data-target="modal-text">
+                <div class="slide-element__button"><img src="../img/slide-element__button.svg" alt=""></div>
                 <p class="text">
                   Идейные соображения высшего порядка, а также дальнейшее развитие различных форм деятельност позволяет выполнять важные задания по разработке систем массового участия. 
                 </p>
               </div>
-              <div class="slide-element link-block">
-                <button class="slide-element__button"><img src="../img/slide-element__button.svg" alt=""></button>
+              <div class="slide-element link-block" data-target="modal-button">
+                <div class="slide-element__button"><img src="../img/slide-element__button.svg" alt=""></div>
                 <a href="#" class="button-style">Мой сайт</a>
               </div>
-              <div class="slide-element separator-block">
-                <button class="slide-element__button"><img src="../img/slide-element__button.svg" alt=""></button>
+              <div class="slide-element separator-block line-type-dashed line-width-100" data-target="modal-separator">
+                <div class="slide-element__button"><img src="../img/slide-element__button.svg" alt=""></div>
                 <hr>
               </div>
-              <div class="slide-element video-block">
-                <button class="slide-element__button"><img src="../img/slide-element__button.svg" alt=""></button>
+              <div class="slide-element video-block" data-target="modal-video">
+                <div class="slide-element__button"><img src="../img/slide-element__button.svg" alt=""></div>
                 <div class="video-block__iframe">
                   <iframe src="https://www.youtube.com/embed/w45AtqQLgcA" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
                 </div>
               </div>
-              <div class="slide-element video-block">
-                <button class="slide-element__button"><img src="../img/slide-element__button.svg" alt=""></button>
+              <div class="slide-element video-block" data-target="modal-video">
+                <div class="slide-element__button"><img src="../img/slide-element__button.svg" alt=""></div>
                 <div class="video-block__iframe">
                   <iframe src="https://player.vimeo.com/video/76979871" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
                 </div>
               </div>
-              <div class="slide-element link-block bg-violet">
-                <button class="slide-element__button"><img src="../img/slide-element__button.svg" alt=""></button>
+              <div class="slide-element link-block bg-violet" data-target="modal-messenger">
+                <div class="slide-element__button"><img src="../img/slide-element__button.svg" alt=""></div>
                 <a href="#" class="button-style">Написать в Viber</a>
               </div>
             </div>
@@ -107,7 +130,7 @@
           <div class="constructor-styles__link">
             <label class="form-block__label" for="">
               <input type="text" name="modal-name" class="form-block__input form-block__input--simple" value="https://selfcard.my/vvvlad" disabled>
-              <button class="copy-button js-copy"><i>1</i></button>
+              <button class="copy-button js-copy"><i class="icon-copy"></i></button>
             </label>
           </div>
           <div class="constructor-styles__content js-switcher-parent">
@@ -140,7 +163,7 @@
                 <img src="../img/messanger.png" alt="">
                 <p class="title">Мессенджер</p>
               </div>
-              <div class="style-tab__block js-modal-templates" id="modal-social">
+              <div class="style-tab__block js-modal-templates" id="modal-social" data-access="0">
                 <img src="../img/social.png" alt="">
                 <p class="title">Соц. сеть</p>
               </div>
@@ -344,31 +367,31 @@
           </div>
           <ul class="price-card__list">
             <li class="price-card__item">
-              <i>√</i>
+              <i class="icon-check-1"></i>
               <span class="text">Стандартные блоки: аватар, текст, кнопка, отступ, фото</span>
             </li>
             <li class="price-card__item checked">
-              <i>√</i>
+              <i class="icon-check-1"></i>
               <span class="text">Полный набор мессенджеров</span>
             </li>
             <li class="price-card__item checked">
-              <i>√</i>
+              <i class="icon-check-1"></i>
               <span class="text">Полный набор соцсетей</span>
             </li>
             <li class="price-card__item checked">
-              <i>√</i>
+              <i class="icon-check-1"></i>
               <span class="text">Полный набор тем оформления</span>
             </li>
             <li class="price-card__item checked">
-              <i>+</i>
+              <i class="icon-plus"></i>
               <span class="text">Настраиваемые действия кнопки</span>
             </li>
             <li class="price-card__item checked">
-              <i>+</i>
+              <i class="icon-plus"></i>
               <span class="text">Добавление видео</span>
             </li>
             <li class="price-card__item special">
-              <i>1</i>
+              <i class="icon-diamond-stone"></i>
               <span class="text">Реферальная ссылка</span>
             </li>
           </ul>
@@ -457,9 +480,9 @@
               </ul>
             </div>
             <div class="align-block content-146px js-text-align">
-              <div data-align="left" class="align-block__content align-block__left active"><i>l</i></div>
-              <div data-align="center" class="align-block__content align-block__center"><i>c</i></div>
-              <div data-align="right" class="align-block__content align-block__right"><i>r</i></div>
+              <div data-align="left" class="align-block__content align-block__left active"><i class="icon-format-align-left"></i></div>
+              <div data-align="center" class="align-block__content align-block__center"><i class="icon-format-align-center"></i></div>
+              <div data-align="right" class="align-block__content align-block__right"><i class="icon-format-align-right"></i></div>
             </div>
           </div>
           <div class="text-style__block text-style__block--radius  content-250px js-font-style" data-access="1">
@@ -483,11 +506,11 @@
         <div class="template-content content-100">
           <div class="template-content__container">
             <ul class="social-list js-selected-messenger">
-              <li data-selected="viber" class="social-list__item active"><i>vb</i></li>
-              <li data-selected="vk" class="social-list__item"><i>vk</i></li>
-              <li data-selected="skype" class="social-list__item"><i>sk</i></li>
-              <li data-selected="telegram" class="social-list__item" data-access="0"><i>tl</i></li>
-              <li data-selected="facebook" class="social-list__item" data-access="0"><i>fb</i></li>
+              <li data-selected="viber" class="social-list__item active"><i class="icon-viber"></i></li>
+              <li data-selected="vk" class="social-list__item"><i class="icon-vk"></i></li>
+              <li data-selected="skype" class="social-list__item"><i class="icon-skype"></i></li>
+              <li data-selected="telegram" class="social-list__item" data-access="0"><i class="icon-telegram"></i></li>
+              <li data-selected="facebook" class="social-list__item" data-access="0"><i class="icon-facebook"></i></li>
             </ul>
           </div>
           <div class="template-content__container space-normal">
@@ -536,12 +559,12 @@
         <div class="template-content content-100">
           <div class="template-content__container">
             <ul class="social-list js-selected-messenger">
-              <li data-selected="vk" class="social-list__item active"><i>vk</i></li>
-              <li data-selected="ok" class="social-list__item"><i>ok</i></li>
-              <li data-selected="youtube" class="social-list__item"><i>yt</i></li>
-              <li data-selected="instagram" class="social-list__item"><i>in</i></li>
-              <li data-selected="facebook" class="social-list__item" data-access="0"><i>fb</i></li>
-              <li data-selected="twitter" class="social-list__item" data-access="0"><i>tv</i></li>
+              <li data-selected="vk" class="social-list__item active"><i class="icon-vk-s"></i></li>
+              <li data-selected="ok" class="social-list__item"><i class="icon-ok"></i></li>
+              <li data-selected="youtube" class="social-list__item"><i class="icon-youtube-s"></i></li>
+              <li data-selected="instagram" class="social-list__item"><i class="icon-Insta-mono"></i></li>
+              <li data-selected="facebook" class="social-list__item" data-access="0"><i class="icon-fb-s"></i></li>
+              <li data-selected="twitter" class="social-list__item" data-access="0"><i class="icon-tw-s"></i></li>
             </ul>
           </div>
           <div class="template-content__container space-normal">
@@ -588,8 +611,8 @@
             <div class="switcher resolution__switcher hover">
               <label class="switcher__button">
                 <input type="checkbox" class="switcher__input">
-                <span class="switcher-text">1 : 1</span>
-                <span class="switcher-text">16 : 10</span>
+                <span class="switcher-text" data-size="large-size">1 : 1</span>
+                <span class="switcher-text" data-size="small-size">16 : 10</span>
                 <div class="label-bg"></div>
               </label>
             </div>
@@ -641,23 +664,23 @@
           </div>
           <div class="template-content__container space-normal">
             <label class="container slider-change">
-              <input type="checkbox" name="checbox-2">
+              <input type="checkbox" class="slider-change-prop" name="checbox-2">
               <span class="text">Автосмена сайдов</span>
               <span class="checkmark"></span>
             </label>
-            <div class="wrap-drop content-114px">
+            <div class="wrap-drop content-114px js-autoplay-time">
               <div class="selected-el"><span></span></div>
               <ul class="drop">
-                  <li class="selected"><a>1</a></li>
-                  <li><a>2</a></li>
-                  <li><a>3</a></li>
-                  <li><a>4</a></li>
-                  <li><a>5</a></li>
-                  <li><a>6</a></li>
-                  <li><a>7</a></li>
-                  <li><a>8</a></li>
-                  <li><a>9</a></li>
-                  <li><a>10</a></li>
+                  <li data-time="1" class="selected"><a>1</a></li>
+                  <li data-time="2"><a>2</a></li>
+                  <li data-time="3"><a>3</a></li>
+                  <li data-time="4"><a>4</a></li>
+                  <li data-time="5"><a>5</a></li>
+                  <li data-time="6"><a>6</a></li>
+                  <li data-time="7"><a>7</a></li>
+                  <li data-time="8"><a>8</a></li>
+                  <li data-time="9"><a>9</a></li>
+                  <li data-time="10"><a>10</a></li>
               </ul>
             </div>
             <p class="time-title">сек.</p>
@@ -698,8 +721,9 @@
     <div class="modal constructor-modal">
       <div class="modal__content">
         <div class="constructor-modal__container">
-          <span class="close-modal"><i>X</i></span>
+          <span class="close-modal"><i class="icon-close"></i></span>
           <div class="js-appendEl-holder"></div>
+          <span class="remove-button"><i class="icon-trash"></i></span>
           <button class="standart-btn standart-btn--blue js-save-modal">Применить</button>
         </div>
       </div>
@@ -723,8 +747,19 @@
 </div>
 
   <script src="../js/jquery-3.2.1.min.js"></script>
+  <script src="../js/slick.min.js"></script>
   <script src="../js/jquery-ui-1.9.2.custom.min.js"></script>
   <script src="../js/jquery.ui.touch-punch.min.js"></script>
   <script src="../js/script.js"></script>
+  <script>
+    // sortable element
+    $(function( event) {
+      $( ".page-wrapper" ).sortable({
+        axis:'y',
+        containment: "parent",
+      });
+      // $( ".page-wrapper" ).disableSelection();
+    });
+  </script>
 </body>
 </html>
