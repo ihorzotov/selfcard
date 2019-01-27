@@ -242,10 +242,6 @@ body {
 
 .slide-element {
   transition: margin .3s , height .3s;
-  cursor: pointer !important;
-}
-
-.slide-element:focus {
   cursor: move;
   cursor: grab;
   cursor: -moz-grab;
@@ -549,6 +545,14 @@ body {
   /*social-list*/
   /*info-button*/
   /*gallery*/
+}
+
+.constructor-modal.changing .remove-button {
+  display: block;
+}
+
+.constructor-modal.changing .constructor-modal__title .title-status:before {
+  content: ' - редактирование';
 }
 
 .constructor-modal [data-access="0"] {
@@ -1090,6 +1094,7 @@ body {
 }
 
 .constructor-modal .remove-button {
+  display: none;
   background: #fff;
   box-shadow: 0px 1px 10px 0px rgba(0, 0, 0, 0.1);
   height: 48px;

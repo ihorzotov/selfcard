@@ -121,4 +121,10 @@
       color: #fff;
     }
   }
+  .copy-button{
+    &:hover{
+      color:#fff;
+      background: #1d9ae5;
+    }
+  }
 }

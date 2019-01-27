@@ -126,7 +126,6 @@ $(document).on('click','.switcher',function(){
         }
   });
 
-  
 }());
 //
 // questions-block click
@@ -422,7 +421,13 @@ $(document).on('click','.js-save-modal',function(){
 
   $('.modal,body,html').removeClass('active overflow changing');
 });
+  // modal remove button
+  $('.constructor-modal .remove-button').click(function(){
+     var parentsAttr = $(this).parents('.modal.changing').attr('data-current');
 
+         $('.slide-element.changing[data-target="'+parentsAttr+'"]').remove();
+         $('.modal , .slide-element , body,html').removeClass('active changing overflow');
+  });
 });//document ready;
 
 // avatar obj
