@@ -2241,7 +2241,7 @@ body {
   background: #1d9ae5;
   position: absolute;
   right: 0px;
-  top: 50%;
+  top: 30px;
   transform: translateY(-50%);
   transition: right .3s;
   z-index: 1;
