@@ -191,7 +191,6 @@ ul {
 }
 
 [class^="icon-"], [class*=" icon-"] {
-  /* use !important to prevent issues with browser extensions that change fonts */
   font-family: 'icomoon' !important;
   speak: none;
   font-style: normal;
@@ -204,6 +203,10 @@ ul {
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-button:before {
+  content: "\e91c";
+}
+
 .icon-Insta-mono:before {
   content: "\e91b";
   color: #c4329a;
@@ -213,6 +216,10 @@ ul {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   transition: radial-gradient .3s;
+}
+
+.icon-eye-outline:before {
+  content: "\e91d";
 }
 
 .icon-vk-s:before {
@@ -367,6 +374,11 @@ body {
   height: 100%;
 }
 
+.wrapper-container.wrapper-flex-top {
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
 span, a {
   display: inline-block;
 }
@@ -478,6 +490,13 @@ input, button, textarea {
 
 .section-title.section-title--lowercase q {
   color: #ff7333;
+}
+
+.section-title.section-title--regular {
+  font-weight: 400;
+  width: 100%;
+  text-align: left;
+  padding: 0;
 }
 
 .section-description {
@@ -619,10 +638,7 @@ input, button, textarea {
   height: 100%;
   line-height: 32px;
   width: 50%;
-}
-
-.switcher .switcher-text + .switcher-text {
-  text-align: right;
+  text-align: center;
 }
 
 .switcher .switcher__button {
@@ -632,7 +648,6 @@ input, button, textarea {
   box-shadow: 0px 1px 7px 0px rgba(0, 0, 0, 0.1);
   border-radius: 16px;
   display: flex;
-  padding: 0 14px;
   cursor: pointer;
   position: relative;
   overflow: hidden;
@@ -657,8 +672,8 @@ input, button, textarea {
   top: 2px;
   display: block;
   background: #1d9ae5;
-  border-radius: 14px;
-  transition: transform .3s , background .3s;
+  border-radius: inherit;
+  transition: all .3s;
   z-index: 2;
 }
 
@@ -666,6 +681,9 @@ input, button, textarea {
   width: 0;
   background: #dfe8ed;
   z-index: 1;
+  left: 0;
+  right: 0;
+  opacity: 0;
 }
 
 .switcher input[type=checkbox]:not(:checked) + .switcher-text {
@@ -683,7 +701,8 @@ input, button, textarea {
 }
 
 .switcher input[type=checkbox]:checked ~ .label-bg:after {
-  transform: translateX(100%);
+  right: 0;
+  left: auto;
 }
 
 /*form-input*/
@@ -887,30 +906,14 @@ textarea.form-block__input {
     background: #1d9ae5;
   }
   .switcher.hover input[type=checkbox]:not(:checked):hover ~ .label-bg:after {
-    transform: translateX(62%);
-    border-radius: 0px 14px 14px 0;
-    width: 60%;
+    width: calc(100% - 4px);
+    left: 2px;
+    opacity: 1;
   }
   .switcher.hover input[type=checkbox]:checked:hover ~ .label-bg:after {
-    transform: translateX(0%);
-    border-radius: 14px 0px 0px 14px;
-    width: 60%;
-  }
-  .switcher.hover.js-tab-switcher input[type=checkbox]:not(:checked):hover ~ .label-bg:after {
-    transform: translateX(65%);
-    border-radius: 0px 24px 24px 0;
-  }
-  .switcher.hover.js-tab-switcher input[type=checkbox]:checked:hover ~ .label-bg:after {
-    transform: translateX(0%);
-    border-radius: 24px 0px 0px 24px;
-  }
-  .switcher.hover.resolution__switcher input[type=checkbox]:not(:checked):hover ~ .label-bg:after {
-    transform: translateX(64%);
-    border-radius: 0px 24px 24px 0;
-  }
-  .switcher.hover.resolution__switcher input[type=checkbox]:checked:hover ~ .label-bg:after {
-    transform: translateX(0%);
-    border-radius: 24px 0px 0px 24px;
+    width: calc(100% - 4px) !important;
+    right: 2px;
+    opacity: 1;
   }
   .switcher-text:hover {
     color: #1d9ae5;
@@ -927,5 +930,8 @@ textarea.form-block__input {
   .close-modal:hover {
     color: #11496a;
     background: #dddddd;
+  }
+  .action-button:hover {
+    background: #3d3d3d;
   }
 }

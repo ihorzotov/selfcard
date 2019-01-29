@@ -17,7 +17,8 @@
       <div class="header-content__img">
         <img src="../img/selfcard.me.png" alt="">
       </div>
-      <ul class="header-list">
+      <div class="header-wrapper">
+        <ul class="header-list">
         <li class="header-list__item current">
           <a href="#" class="link">Конструктор</a>
         </li>
@@ -31,7 +32,7 @@
           <span class="dropdown-button js-dropdown-button ">поддержка</span>
             <ul class="dropdown__list">
               <li class="dropdown__item"><a href="#">FAQ</a></li>
-              <li class="dropdown__item"><a href="#">Нашли ошибку?</a></li>
+              <li class="dropdown__item"><a href="#">Сообщить о проблеме</a></li>
             </ul>
         </li>
       </ul>
@@ -49,8 +50,56 @@
           </ul>
         </div>
       </div>
+      </div>
       <div class="header-alert unread">
-        <i class="icon-bell"></i>
+        <div class="header-alert__content">
+          <i class="icon-bell"></i>
+        </div>
+        <div class="alert-block">
+          <div class="alert-block__content">
+            <div class="alert-block__card new-alert">
+              <span class="text">Вы получили письмо от техподдержки по заявке <a href="">№345000</a></span>
+              <span class="time">30 мин. назад</span>
+            </div>
+            <div class="alert-block__card new-alert">
+              <span class="text">Вы получили письмо от техподдержки по заявке <a href="">№345000</a></span>
+              <span class="time">30 мин. назад</span>
+            </div>
+            <div class="alert-block__card">
+              <span class="text">Вы получили письмо от техподдержки по заявке <a href="">№345000</a></span>
+              <span class="time">30 мин. назад</span>
+            </div>
+            <div class="alert-block__card">
+              <span class="text">Вы получили письмо от техподдержки по заявке <a href="">№345000</a></span>
+              <span class="time">30 мин. назад</span>
+            </div>
+            <div class="alert-block__card new-alert">
+              <span class="text">Вы получили письмо от техподдержки по заявке <a href="">№345000</a></span>
+              <span class="time">30 мин. назад</span>
+            </div>
+            <div class="alert-block__card">
+              <span class="text">Вы получили письмо от техподдержки по заявке <a href="">№345000</a></span>
+              <span class="time">30 мин. назад</span>
+            </div>
+            <div class="alert-block__card">
+              <span class="text">Вы получили письмо от техподдержки по заявке <a href="">№345000</a></span>
+              <span class="time">30 мин. назад</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="ui-pnotify ui-pnotify-fade-normal ui-pnotify-mobile-able ui-pnotify-in ui-pnotify-fade-in ui-pnotify-move" aria-live="assertive" aria-role="alertdialog">
+      <div class="brighttheme ui-pnotify-container ui-pnotify-shadow" role="alert">
+        <div class="ui-pnotify-sticker" aria-role="button" aria-pressed="false" tabindex="0" title="Stick">
+          <span class="icon-button" aria-pressed="true"></span>
+        </div>
+        <div class="ui-pnotify-closer" aria-role="button" tabindex="0" title="Close">
+          <span class="icon-close"></span>
+        </div>
+        <h4 class="ui-pnotify-title" style="display: none;"></h4>
+        <div class="ui-pnotify-text" aria-role="alert">Блок успешно удален.</div>
+        <div class="ui-pnotify-action-bar"><span class="action-button">Восстановить</span></div>
       </div>
     </div>
   </header>
@@ -128,10 +177,10 @@
         </div>
         <div class="constructor-styles">
           <div class="constructor-styles__link">
-            <label class="form-block__label" for="">
+            <label class="form-block__label js-input--link" for="">
               <input type="text" name="modal-name" class="form-block__input form-block__input--simple" value="https://selfcard.my/vvvlad" disabled>
-              <button class="copy-button js-copy"><i class="icon-copy"></i></button>
             </label>
+            <button class="copy-button js-copy"><i class="icon-copy"></i></button>
           </div>
           <div class="constructor-styles__content js-switcher-parent">
             <div class="switcher js-tab-switcher hover">

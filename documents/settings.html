@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="../css/account.css">
     <link rel="stylesheet" href="../css/media.css">
 </head>
-<body class="pagename-plans">
+<body class="pagename-settings">
   <header class="header">
     <div class="header-content">
       <div class="header-content__img">
@@ -103,56 +103,113 @@
   </header>
   <main class="main">
     <div class="wrapper">
-      <div class="plans-title">
-        <p class="section-title section-title--lowercase">Ваш текущий тариф - <q>self</q></p>
-        <div class="countdown">
-          <span class="countdown__title">Осталось:</span>
-          <div class="countdown__content"><span>00</span> <span>00</span></div>
+      <div class="settings-block js-switcher-parent active">
+        <div class="settings-block__management">
+          <div class="switcher js-tab-switcher hover">
+            <label class="switcher__button">
+              <input type="checkbox" class="switcher__input" id="switcher-tabs__input" checked="checked">
+              <span class="switcher-text">Финансы и вывод средств</span>
+              <span class="switcher-text">Настройки профиля</span>
+              <div class="label-bg"></div>
+            </label>
+          </div>
+          <a href="#" class="exit-link">Выход</a>
+        </div>
+        <div class="settings-fields">
+          <p class="settings-fields__title">Вы авторизованы через сайт. Вы можете также авторизоваться через свой <a href="#">Instagram</a> или <a href="#">Facebook</a>.</p>
+          <div class="settings-fields__block" data-access="0">
+            <div class="fields-content">
+              <label class="form-block__label disabled" for="">
+                <span class="title">Доменное имя сайта</span>
+                <input type="text" name="modal-email" class="form-block__input" value="selfcard.me" disabled="">
+                <span class="input-background"></span>
+              </label>
+            </div>
+            <div class="button-swap">
+              <div class="button-swap__content">
+                <button class="fields-change__btn js-fields-clear">Отменить</button>
+                <button class="fields-change__btn js-fields-save">Применить</button>
+              </div>
+              <button class="fields-change__btn js-fields-change">Изменить</button>
+            </div>
+          </div>
+          <div class="settings-fields__block">
+            <div class="fields-content">
+              <label class="form-block__label disabled" for="">
+                <span class="title">Email</span>
+                <input type="text" name="modal-email" class="form-block__input" value="vvvlad@gmail.com" disabled="">
+                <span class="input-background"></span>
+              </label>
+
+            </div>
+            <div class="button-swap">
+              <div class="button-swap__content">
+                <button class="fields-change__btn js-fields-clear">Отменить</button>
+                <button class="fields-change__btn js-fields-save">Применить</button>
+              </div>
+              <button class="fields-change__btn js-fields-change">Изменить</button>
+            </div>
+          </div>
+          <div class="settings-fields__block">
+            <div class="fields-content fields-content--flex">
+              <label class="form-block__label disabled" for="">
+                <span class="title">Логин</span>
+                <input type="text" name="modal-email" class="form-block__input" value="selfcard.me/vvvlad" disabled="">
+                <span class="input-background"></span>
+              </label>
+              <button class="resending-button"><span class="text"></span><span class="tooltip-button__js info-button" data-tooltip="1" data-tooltip__text="Формат: Jpeg, PNG. Размер: от 690 пикс.">i</span></button>
+            </div>
+            <div class="button-swap">
+              <div class="button-swap__content">
+                <button class="fields-change__btn js-fields-clear">Отменить</button>
+                <button class="fields-change__btn js-fields-save">Применить</button>
+              </div>
+              <button class="fields-change__btn js-fields-change">Изменить</button>
+            </div>
+          </div>
+          <div class="settings-fields__block">
+            <div class="fields-content">
+              <label class="form-block__label js-keyup-text disabled" for="">
+                <span class="title">Введите текущий пароль</span>
+                <input type="password" name="modal-email" class="form-block__input" disabled="" value="123">
+                <span class="input-background"></span>
+                <span class="show-password"><i class="icon-eye-outline"></i></span>
+                <p class="info">Вы еще ни разу не меняли свой пароль</p>
+              </label>
+              <label class="form-block__label js-keyup-text disabled password-confirmation" for="">
+                <span class="title">Придумайте новый пароль</span>
+                <input type="password" name="modal-email" class="form-block__input" disabled="" value="">
+                <span class="input-background"></span>
+              </label>
+              <label class="form-block__label js-keyup-text disabled password-confirmation" for="">
+                <span class="title">Повторите новый пароль</span>
+                <input type="password" name="modal-email" class="form-block__input" disabled="" value="">
+                <span class="input-background"></span>
+              </label>
+            </div>
+            <div class="button-swap">
+              <div class="button-swap__content">
+                <button class="fields-change__btn js-fields-clear">Отменить</button>
+                <button class="fields-change__btn js-fields-save">Применить</button>
+              </div>
+              <button class="fields-change__btn js-fields-change">Изменить</button>
+            </div>
+          </div>
+        </div>
+        <div class="remove-account">
+          <a href="#" class="link">Удалить аккаунт</a>
         </div>
       </div>
-      <div class="plans-content">
-        <div class="price-card price-card__free disabled">
-          <div class="price-card__top">
-            <div class="price-card__flag price-card__flag--light"><span>free</span></div>
-          </div>
-          <ul class="price-card__list">
-            <li class="price-card__item">
-              <i class="icon-check-1"></i>
-              <span class="text">Стандартные блоки: аватар, текст, кнопка, отступ, фото</span>
-            </li>
-            <li class="price-card__item">
-              <i class="icon-check-1"></i>
-              <span class="text">Базовый набор мессенджеров</span>
-            </li>
-            <li class="price-card__item">
-              <i class="icon-check-1"></i>
-              <span class="text">Базовый набор соцсетей</span>
-            </li>
-            <li class="price-card__item checked">
-              <i class="icon-check-1"></i>
-              <span class="text">Базовый набор тем оформления</span>
-            </li>
-            <li class="price-card__item disabled">
-              <i class="icon-close"></i>
-              <span class="text">Настраиваемые действия кнопки</span>
-            </li>
-            <li class="price-card__item disabled">
-              <i class="icon-close"></i>
-              <span class="text">Добавление видео</span>
-            </li>
-            <li class="price-card__item special">
-              <i class="icon-diamond-stone"></i>
-              <span class="text">Реферальная ссылка</span>
-            </li>
-          </ul>
-          <a href="#" class="standart-btn"><span></span></a>
-        </div>
-        <div class="price-card price-card__self discount ">
+    </div>
+    <div class="modal-templates">
+      <div class="modal-templates__content modal-pro__access" data-type='Pro-access' data-target="pro-access">
+        <p class="pro-access__title">Рекомендуем подключить self-тариф, <br> что бы воспользоваться этой функцией</p>
+        <div class="price-card">
           <div class="price-card__top">
             <div class="price-card__flag">
               <span><span class="num-js">279</span> <sup>руб</sup></span>
             </div>
-            <div class="switcher js-price-animation hover"  data-discount="25">
+            <div class="switcher js-price-animation hover">
               <label class="switcher__button">
                 <input type="checkbox" class="switcher__input">
                 <span class="switcher-text js-switcher-disabled" data-price='279'>6 мес.</span>
@@ -191,39 +248,20 @@
               <span class="text">Реферальная ссылка</span>
             </li>
           </ul>
-          <a href="#" class="standart-btn"><span></span></a>
-        </div>
-      </div>
-      <div class="questions">
-        <p class="section-title section-title--small">Вопросы и ответы по тарифам</p>  
-        <div class="questions-block">
-          <div class="questions-block__title"><span class="text">Сколько профилей можно подключить на один тариф?</span></div>
-          <div class="questions-block__dropdown">
-            <p class="text">Разнообразный и богатый опыт новая модель организационной деятельности влечет за собой процесс внедрения и модернизации модели развития.</p>
-          </div>
-        </div>
-        <div class="questions-block">
-          <div class="questions-block__title"><span class="text">Сколько профилей можно подключить на один тариф?</span></div>
-          <div class="questions-block__dropdown">
-            <p class="text">Разнообразный и богатый опыт новая модель организационной деятельности влечет за собой процесс внедрения и модернизации модели развития.</p>
-          </div>
-        </div>
-        <div class="questions-block">
-          <div class="questions-block__title"><span class="text">Сколько профилей можно подключить на один тариф?</span></div>
-          <div class="questions-block__dropdown">
-            <p class="text">Разнообразный и богатый опыт новая модель организационной деятельности влечет за собой процесс внедрения и модернизации модели развития.</p>
-          </div>
-        </div>
-        <div class="questions-block">
-          <div class="questions-block__title"><span class="text">Сколько профилей можно подключить на один тариф?</span></div>
-          <div class="questions-block__dropdown">
-            <p class="text">Разнообразный и богатый опыт новая модель организационной деятельности влечет за собой процесс внедрения и модернизации модели развития.</p>
-          </div>
+          <a href="#" class="standart-btn"><span>Попробовать</span></a>
         </div>
       </div>
     </div>
   </main>
   <footer class="footer">
+    <div class="modal constructor-modal">
+      <div class="modal__content">
+        <div class="constructor-modal__container">
+          <span class="close-modal"><i class="icon-close"></i></span>
+          <div class="js-appendEl-holder"></div>
+        </div>
+      </div>
+    </div>
     <div class="wrapper wrapper-container">
       <div class="footer__element copy">
         <p>© “self-card” 2018,</p>
@@ -244,16 +282,5 @@
   <script src="../js/jquery-3.2.1.min.js"></script>
   <script src="../js/jquery.countdown.min.js"></script>
   <script src="../js/script.js"></script>
-  <script type="text/javascript">
-          $(function(){
-            $(".countdown__content").countdown("2019/3/4", function(event) {
-                var hours = event.offset.hours;
-                var days = event.offset.totalDays;
-
-                var html = '<span>'+days+' Дней'+'</span>'+' <span>'+hours+' часов '+'</span>';
-                $(this).html(html);
-            });
-          });
-      </script>  
 </body>
 </html>

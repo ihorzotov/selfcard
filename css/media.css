@@ -17,6 +17,13 @@
   .header-authentication:hover .header-authentication__content {
     background: #1d9ae5;
   }
+  .header-alert__content:hover {
+    background: #f78f10;
+    color: #fff;
+  }
+  .constructor-save__button:hover {
+    background: #1d9ae5;
+  }
   .js-uploader:not(.active) .template-personal__bg:hover {
     background-image: url(../img/photo-hover.png) !important;
     background: 33px 18px no-repeat;
@@ -82,5 +89,55 @@
   .copy-button:hover {
     color: #fff;
     background: #1d9ae5;
+  }
+  .constructor-styles__link .form-block__input:hover, .exit-link:hover {
+    color: #1d9ae5;
+  }
+  .alert-block__card .text a:hover {
+    color: #1d9ae5 !important;
+  }
+  .style-tab__block:hover {
+    border: 2px solid #1d9ae5;
+    color: #1d9ae5;
+  }
+  .ui-pnotify-sticker:hover {
+    color: #1d9ae5 !important;
+  }
+  .ui-pnotify-closer:hover, .ui-pnotify-sticker:hover {
+    background: #eaeaea;
+  }
+  .ui-pnotify-closer:hover {
+    color: #ff5447 !important;
+  }
+  .remove-account .link:hover {
+    color: #ff5447;
+    border-bottom: 1px solid #ff5447;
+  }
+  .faq-aside__item:not(.active):hover .text {
+    color: #1d9ae5;
+  }
+  .fields-change__btn:hover {
+    color: #fff;
+    background: #1d9ae5;
+  }
+  .show-password:not(.active):hover {
+    color: #fff;
+    background: #1d9ae5;
+  }
+  .js-fields-clear:hover {
+    color: #fff !important;
+    background: #ff5447;
+  }
+}
+
+@media (max-width: 1679px) {
+  .header-wrapper {
+    width: calc(100% - 400px);
+  }
+}
+
+@media (max-width: 1139px) {
+  .aside-hover__arrow {
+    display: none;
   }
 }

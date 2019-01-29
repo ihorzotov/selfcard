@@ -66,24 +66,24 @@ $(document).on('click','.switcher',function(){
   });
 
   // copy to clipboard
-
   $('.js-copy').click(function(){
-    var text = $(this).parents('.form-block__label').find('.form-block__input');
+    var text = $(this).parents('.constructor-styles__link').find('.form-block__input');
   
         text.attr('disabled', false).select();
         document.execCommand("copy");
         text.attr('disabled', true);
         window.getSelection().removeAllRanges();
 
-    //var copyText = $(this).parents('.form-block__label').find('.form-block__input').val();
-
-    // navigator.clipboard.writeText(copyText). then (function() {
-    //     // success
-    // }, function (err) {
-    //     //error
-    // });
   });
 
+  // make link from input
+  $('.js-input--link').click(function(){
+    var text = $(this).find('.form-block__input');
+    
+        text.attr('disabled', false);
+        window.open(text.val(), '_blank');
+        text.attr('disabled', true);
+  });
   function radioButton(element,item){
     var clickElement = element,
         thisAccess = $(item).attr('data-access');
@@ -126,6 +126,22 @@ $(document).on('click','.switcher',function(){
         }
   });
 
+  // show alert dropdown
+  $('.header-alert').click(function(){
+    $(this).toggleClass('active');
+  });
+
+  // faq tabs
+  $('.faq-aside__item').on('click', function(){
+    var parentsID = $(this).attr('id');
+
+        $('.faq-aside__item').removeClass('active');
+        $(this).addClass('active');
+        $('.faq-content').removeClass('active');
+        $('.faq-content[data-target="'+parentsID+'"]').addClass('active');
+  });
+
+
 }());
 //
 // questions-block click
@@ -133,6 +149,24 @@ $(document).on('click','.switcher',function(){
     $('.questions-block').not($(this).parents('.questions-block')).removeClass('active');
     $(this).parents('.questions-block').toggleClass('active');
   });
+
+// aside floating arrow
+  if( $(window).width() > 1140 ) {
+      $('.faq-aside__item').hover(function(){
+        var childHeight = $(this).find('.text').height() / 2,
+            position = $(this).find('.text').position().top + childHeight;
+
+            $('.aside-hover__arrow').css({'top': position});
+      });
+
+      $('.faq-aside').on('mouseleave',function(){
+        var activeChildHeight = $(this).find('.faq-aside__item.active .text').height() / 2;
+            activeChildPosition = $(this).find('.faq-aside__item.active .text').position().top + activeChildHeight;
+
+            $('.aside-hover__arrow').css({'top': activeChildPosition});
+      });
+  }
+//
 
 function modalTemplatesAppend(target){
   var contentType = $('.modal-templates').find('.modal-templates__content[data-target='+target+']');
@@ -277,122 +311,137 @@ $(document).on('click','.remove-button', function(){
 });
 //
 
-// save modal and append content to visual constructor
-$(document).on('click','.js-save-modal',function(){
-  var parentsContentType = $(this).parents('.modal.active').attr('data-content-type'),
-      appendContent;
+// // save modal and append content to visual constructor
+// $(document).on('click','.js-save-modal',function(){
+//   var parentsContentType = $(this).parents('.modal.active').attr('data-content-type'),
+//       appendContent;
       
-      // avatar append
-      if( parentsContentType == 'Avatar') {
-        var elementLength = $('.slide-element.self').length;
-          if( elementLength <= 3 ){
-              var bgSource = $('.modal.active .js-img-holder').css('background-image'),
-                  imageSize = $('.modal.active .js-image-size li.selected').attr('data-size'),
-                  signatureCheckbox = $('.modal.active .js-signature__checkbox').prop('checked'),
-                  fontSize = $('.modal.active .js-font-size li.selected').attr('data-size'),
-                  inputText = $('.modal.active .form-block__input').val();
-                  signature = (signatureCheckbox == true)? '<p class="self__name">'+inputText+'</p>':'',
-                  className = ' img'+imageSize+' fs'+fontSize;
+//       // avatar append
+//       if( parentsContentType == 'Avatar') {
+//         var elementLength = $('.slide-element.self').length;
+//           if( elementLength <= 3 ){
+//               var bgSource = $('.modal.active .js-img-holder').css('background-image'),
+//                   imageSize = $('.modal.active .js-image-size li.selected').attr('data-size'),
+//                   signatureCheckbox = $('.modal.active .js-signature__checkbox').prop('checked'),
+//                   fontSize = $('.modal.active .js-font-size li.selected').attr('data-size'),
+//                   inputText = $('.modal.active .form-block__input').val();
+//                   signature = (signatureCheckbox == true)? '<p class="self__name">'+inputText+'</p>':'',
+//                   className = ' img'+imageSize+' fs'+fontSize;
 
-              bgSource = bgSource.replace('url(','').replace(')','').replace(/\"/gi, "");
+//               bgSource = bgSource.replace('url(','').replace(')','').replace(/\"/gi, "");
 
-                  appendContent = '<div class="slide-element self '+className+'" data-target="modal-avatar">\
-                                <div class="slide-element__button"><img src="../img/slide-element__button.svg" alt=""></div>\
-                                <div class="self__photo" style="background-image: url('+bgSource+');"></div>\
-                                '+signature+'\
-                               </div>';
-          }else{
-            //сообщение об ошибке
-          }
-      }  //button append
-      else if( parentsContentType == 'Button') {
-               var buttonAction = $('.modal.active .js-button-action li.selected').attr('data-action'),
-                   buttonLink = $('.modal.active .js-button-link .form-block__input').val(),
-                   buttonName = $('.modal.active .js-button-name .form-block__input').val(),
-                   fontSize = $('.modal.active .js-font-size li.selected').attr('data-size'),
-                   fontFamily = $('.modal.active .js-font-family li.selected').attr('data-font'),
-                   textStyle = $('.modal.active .js-font-style .text-style__circle.active').attr('data-style'),
-                   className = ' fs'+fontSize+ ' ff-'+fontFamily+ ' text-style-'+textStyle,
-                   appendContent = '<div class="slide-element link-block '+className+'" data-target="modal-button">\
-                                      <div class="slide-element__button"><img src="../img/slide-element__button.svg" alt=""></div>\
-                                      <a href="'+buttonAction+buttonLink+'" class="button-style button-style--black">'+buttonName+'</a>\
-                                    </div>';
+//                   appendContent = '<div class="slide-element self '+className+'" data-target="modal-avatar">\
+//                                 <div class="slide-element__button"><img src="../img/slide-element__button.svg" alt=""></div>\
+//                                 <div class="self__photo" style="background-image: url('+bgSource+');"></div>\
+//                                 '+signature+'\
+//                                </div>';
+//           }else{
+//             //сообщение об ошибке
+//           }
+//       }  //button append
+//       else if( parentsContentType == 'Button') {
+//                var buttonAction = $('.modal.active .js-button-action li.selected').attr('data-action'),
+//                    buttonLink = $('.modal.active .js-button-link .form-block__input').val(),
+//                    buttonName = $('.modal.active .js-button-name .form-block__input').val(),
+//                    fontSize = $('.modal.active .js-font-size li.selected').attr('data-size'),
+//                    fontFamily = $('.modal.active .js-font-family li.selected').attr('data-font'),
+//                    textStyle = $('.modal.active .js-font-style .text-style__circle.active').attr('data-style'),
+//                    className = ' fs'+fontSize+ ' ff-'+fontFamily+ ' text-style-'+textStyle,
+//                    appendContent = '<div class="slide-element link-block '+className+'" data-target="modal-button">\
+//                                       <div class="slide-element__button"><img src="../img/slide-element__button.svg" alt=""></div>\
+//                                       <a href="'+buttonAction+buttonLink+'" class="button-style button-style--black">'+buttonName+'</a>\
+//                                     </div>';
 
                
-      } // text append
-      else if( parentsContentType == 'Text') {
-               var fontFamily = $('.modal.active .js-font-family li.selected').attr('data-font'),
-                   fontSize = $('.modal.active .js-font-size li.selected').attr('data-size'),
-                   textAlign = $('.modal.active .js-text-align .align-block__content.active').attr('data-align'),
-                   textareaText = $('.modal.active .js-textarea-text .form-block__input').val(),
-                   textStyle = $('.modal.active .js-font-style .text-style__circle.active').attr('data-style'),
-                   className = ' fs'+fontSize+ ' ff-'+fontFamily+ ' text-style-'+textStyle+' text-align-'+textAlign,
-                   appendContent = '<div class="slide-element text-block '+className+'" data-target="modal-text">\
-                                      <div class="slide-element__button"><img src="../img/slide-element__button.svg" alt=""></div>\
-                                      <p class="text">'+textareaText+'</p>\
-                                    </div>';
+//       } // text append
+//       else if( parentsContentType == 'Text') {
+//                var fontFamily = $('.modal.active .js-font-family li.selected').attr('data-font'),
+//                    fontSize = $('.modal.active .js-font-size li.selected').attr('data-size'),
+//                    textAlign = $('.modal.active .js-text-align .align-block__content.active').attr('data-align'),
+//                    textareaText = $('.modal.active .js-textarea-text .form-block__input').val(),
+//                    textStyle = $('.modal.active .js-font-style .text-style__circle.active').attr('data-style'),
+//                    className = ' fs'+fontSize+ ' ff-'+fontFamily+ ' text-style-'+textStyle+' text-align-'+textAlign,
+//                    appendContent = '<div class="slide-element text-block '+className+'" data-target="modal-text">\
+//                                       <div class="slide-element__button"><img src="../img/slide-element__button.svg" alt=""></div>\
+//                                       <p class="text">'+textareaText+'</p>\
+//                                     </div>';
 
 
-      } // separator append
-      else if( parentsContentType == 'Separator') {
-               var lineType = $('.modal.active .js-line-type li.selected').attr('data-line-type'),
-                   hiddenLine = ($('.modal.active .js-hidden-line .hidden-line__checkbox').prop('checked') == true)? 'hidden' : 'show',
-                   topMargin = $('.modal.active .js-top-margin li.selected').attr('data-top'),
-                   bottomMargin = $('.modal.active .js-bottom-margin li.selected').attr('data-bottom'),
-                   lineWidth = $('.modal.active .js-line-width li.selected').attr('data-width'),
-                   className = ' line-type-'+lineType+ ' line-'+hiddenLine+ ' top-margin-'+topMargin+' bottom-margin-'+bottomMargin+' line-width-'+lineWidth,
-                   appendContent = '<div class="slide-element separator-block '+className+'" data-target="modal-separator">\
-                                      <div class="slide-element__button"><img src="../img/slide-element__button.svg" alt=""></div>\
-                                      <hr>\
-                                    </div>';
+//       } // separator append
+//       else if( parentsContentType == 'Separator') {
+//                var lineType = $('.modal.active .js-line-type li.selected').attr('data-line-type'),
+//                    hiddenLine = ($('.modal.active .js-hidden-line .hidden-line__checkbox').prop('checked') == true)? 'hidden' : 'show',
+//                    topMargin = $('.modal.active .js-top-margin li.selected').attr('data-top'),
+//                    bottomMargin = $('.modal.active .js-bottom-margin li.selected').attr('data-bottom'),
+//                    lineWidth = $('.modal.active .js-line-width li.selected').attr('data-width'),
+//                    className = ' line-type-'+lineType+ ' line-'+hiddenLine+ ' top-margin-'+topMargin+' bottom-margin-'+bottomMargin+' line-width-'+lineWidth,
+//                    appendContent = '<div class="slide-element separator-block '+className+'" data-target="modal-separator">\
+//                                       <div class="slide-element__button"><img src="../img/slide-element__button.svg" alt=""></div>\
+//                                       <hr>\
+//                                     </div>';
 
 
-      }// gallery append
-      // else if( parentsContentType == 'Gallery') {
-      //          var checkedStatus = $('.modal.active .resolution__switcher .switcher__input').prop('checked');
-      //              resolutionVal = (checkedStatus == false)? $('.modal.active .resolution__switcher .switcher-text:first').text() : $('.modal.active .resolution__switcher .switcher-text:last').text(),
-      //              linkHolder=[],
-      //              sliderChange = $('.modal.active .slider-change .slider-change-prop').prop("checked"),
-      //              //sliderChangeVal = (sliderChange == false)? null : sliderChange,
-      //              sliderAutoplay = $('.modal.active .js-autoplay-time li.selected').data('time'),
-      //              asd = (sliderChange == false)? 0: sliderAutoplay;
+//       }// gallery append
+//       else if( parentsContentType == 'Gallery') {
+//                var checkedStatus = $('.modal.active .resolution__switcher .switcher__input').prop('checked');
+//                    resolutionVal = (checkedStatus == false)? $('.modal.active .resolution__switcher .switcher-text:first').text() : $('.modal.active .resolution__switcher .switcher-text:last').text(),
+//                    linkHolder=[],
+//                    sliderChange = $('.modal.active .slider-change .slider-change-prop').prop("checked"),
+//                    //sliderChangeVal = (sliderChange == false)? null : sliderChange,
+//                    sliderAutoplay = $('.modal.active .js-autoplay-time li.selected').data('time'),
+//                    asd = (sliderChange == false)? 0: sliderAutoplay;
 
-      //               $('.modal.active .js-uploader.active').each(function(key,item){
-      //                 var bgSource = $(item).find('.js-img-holder').css('background-image').replace('url(','').replace(')','').replace(/\"/gi, "");
-      //                     linkHolder.push(bgSource);
-      //               });
+//                     $('.modal.active .js-uploader.active').each(function(key,item){
+//                       var bgSource = $(item).find('.js-img-holder').css('background-image').replace('url(','').replace(')','').replace(/\"/gi, "");
+//                           linkHolder.push(bgSource);
+//                     });
 
-      //           var appendContent = '<div class="slide-element gallery-block small">\
-      //                                 <div class="slide-element__button"><img src="../img/slide-element__button.svg" alt=""></div>\
-      //                                 <div class="gallery-slider" data-autoplay="'+sliderChange+'"  data-autoplay-time="'+asd+'">\
-      //                                   <div class="gallery-slider__holder">\
-      //                                     <div class="gallery-slider__element" style="background-image: url(../img/telegram.svg);"></div>\
-      //                                   </div>\
-      //                                   <div class="gallery-slider__holder">\
-      //                                     <div class="gallery-slider__element" style="background-image: url(../img/telegram.svg);"></div>\
-      //                                   </div>\
-      //                                   <div class="gallery-slider__holder">\
-      //                                     <div class="gallery-slider__element" style="background-image: url(../img/telegram.svg);"></div>\
-      //                                   </div>\
-      //                                 </div>\
-      //                               </div>';
+//                 var appendContent = '<div class="slide-element gallery-block small">\
+//                                       <div class="slide-element__button"><img src="../img/slide-element__button.svg" alt=""></div>\
+//                                       <div class="gallery-slider" data-autoplay="'+sliderChange+'"  data-autoplay-time="'+asd+'">\
+//                                         <div class="gallery-slider__holder">\
+//                                           <div class="gallery-slider__element" style="background-image: url(../img/telegram.svg);"></div>\
+//                                         </div>\
+//                                         <div class="gallery-slider__holder">\
+//                                           <div class="gallery-slider__element" style="background-image: url(../img/telegram.svg);"></div>\
+//                                         </div>\
+//                                         <div class="gallery-slider__holder">\
+//                                           <div class="gallery-slider__element" style="background-image: url(../img/telegram.svg);"></div>\
+//                                         </div>\
+//                                       </div>\
+//                                     </div>';
 
-      // }// video append
-      else if( parentsContentType == 'Video') {
-               var videoSource = $('.modal.active .js-video-src .form-block__input').val();
-               var appendContent = '<div class="slide-element video-block" data-target="modal-video">\
-                                      <div class="slide-element__button"><img src="../img/slide-element__button.svg" alt=""></div>\
-                                      <div class="video-block__iframe">\
-                                        <iframe src="'+getVideoId(videoSource)+'" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>\
-                                      </div>\
-                                    </div>';
+//       }// video append
+//       else if( parentsContentType == 'Video') {
+//                var videoSource = $('.modal.active .js-video-src .form-block__input').val();
+//                var appendContent = '<div class="slide-element video-block" data-target="modal-video">\
+//                                       <div class="slide-element__button"><img src="../img/slide-element__button.svg" alt=""></div>\
+//                                       <div class="video-block__iframe">\
+//                                         <iframe src="'+getVideoId(videoSource)+'" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>\
+//                                       </div>\
+//                                     </div>';
 
 
+//       };
+
+//    $('.page-wrapper').append(appendContent);
+//    $('.modal,body,html').removeClass('active overflow');
+// });
+
+
+
+
+// add shadow to alert-block when element is overflowd
+(function (){
+  var elementOverflowHeight = $('.alert-block__content').height(),
+      elementRealHeight = $('.alert-block__content').prop('scrollHeight');
+
+      if( elementOverflowHeight != elementRealHeight ) {
+          $('.alert-block').addClass('alert-block--shadow');
+      }else{
+          $('.alert-block').removeClass('alert-block--shadow');
       };
-
-   $('.page-wrapper').append(appendContent);
-   $('.modal,body,html').removeClass('active overflow');
-});
+}());
 
 function initSliders(){
   $('.slide-element .gallery-slider').each(function(key,item){
@@ -414,6 +463,106 @@ function initSliders(){
 initSliders();
 
 
+
+// settings fields change button 
+
+function fieldsActivation (thisEl,change,formInput){
+  // ie
+  // if (!change) {
+  //   change = 0;
+  // }
+  var label = thisEl.parents('.settings-fields__block').find('.form-block__label');
+      
+      if( change == 0 ) {
+          label.removeClass("disabled");
+          formInput.prop('disabled',false).first().focus();
+      }else{
+          label.addClass("disabled");
+          formInput.prop('disabled',true);
+      }
+}
+// fields-change__btn
+(function(){
+  var defaultValue;
+
+      $('.fields-change__btn').on("click",function(){
+        var thisEl = $(this),
+            formInput = thisEl.parents('.settings-fields__block').find('.form-block__input');
+            
+         
+            if( thisEl.parents('.settings-fields__block').attr('data-access') != 0){
+                thisEl.parents('.button-swap').toggleClass('change');
+
+                if( thisEl.hasClass('js-fields-change') ){
+                    defaultValue = formInput.first().val();
+                    fieldsActivation(thisEl,0,formInput);
+                    thisEl.parents('.settings-fields__block').find('.password-confirmation .form-block__input').val('');
+                }else if( thisEl.hasClass('js-fields-clear') ){
+                          formInput.first().val(defaultValue);
+                          fieldsActivation(thisEl,1,formInput);
+                }else if( thisEl.hasClass('js-fields-save') ){
+                          fieldsActivation(thisEl,1,formInput);
+                }
+            }
+      });
+}());//
+
+// show-password button 
+  $('.show-password').on('click',function(){
+    var thisParents = $(this).parents('.fields-content');
+        $(this).toggleClass('active');
+        thisParents.toggleClass('password-text');
+        if( thisParents.hasClass('password-text') ){
+            thisParents.find('.form-block__input').prop('type','text');
+        }else{
+            thisParents.find('.form-block__input').prop('type','password');
+        }
+  });
+
+// // floating text on keyup
+// (function(){
+//   function createstars(n) {
+//     var stars = "";
+//         for (var i = 0; i < n; i++) {
+//           stars += "*";
+//         }
+//         return stars;
+//   }
+//   var classStatus,
+//       timer = "";
+//       $('.js-keyup-text .form-block__input').on('focus',function(){
+//          if( $(this).parents('.fields-content').hasClass('password-text') ) {
+//              classStatus = 1;
+//          }else{
+//              classStatus = 0;
+//          }
+//       });
+      
+//       $('.js-keyup-text .form-block__input').on('keyup',function(e){
+//         if( classStatus == 0 ) {
+//             var thisEl = $(this),
+//                 code = e.which;
+
+//                 if( code == 8 ) {
+//                     var length = thisEl.val().length;
+//                 } else if (code == 37) {
+
+//                 } else {
+//                   var current_val = thisEl.val().length;
+//                       thisEl.val(createstars(current_val - 1) + thisEl.val().substring(current_val - 1));
+//                 }
+
+//                 clearTimeout(timer);
+//                 timer = setTimeout(function() {
+//                   thisEl.val(createstars(thisEl.val().length));
+//                 }, 200);
+//         }
+//         console.log($(this).val());
+//       });
+      
+// }());
+
+
 //save modal and append content to visual constructor
 $(document).on('click','.js-save-modal',function(){
   var parentsContentType = $(this).parents('.modal.active').attr('data-content-type');
@@ -428,6 +577,9 @@ $(document).on('click','.js-save-modal',function(){
          $('.slide-element.changing[data-target="'+parentsAttr+'"]').remove();
          $('.modal , .slide-element , body,html').removeClass('active changing overflow');
   });
+
+
+
 });//document ready;
 
 // avatar obj

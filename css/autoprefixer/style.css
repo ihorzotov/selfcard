@@ -189,7 +189,6 @@ ul {
 }
 
 [class^="icon-"], [class*=" icon-"] {
-  /* use !important to prevent issues with browser extensions that change fonts */
   font-family: 'icomoon' !important;
   speak: none;
   font-style: normal;
@@ -202,9 +201,14 @@ ul {
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-button:before {
+  content: "\e91c";
+}
+
 .icon-Insta-mono:before {
   content: "\e91b";
   color: #c4329a;
+  background: transparent;
   background: -webkit-radial-gradient(33% 100% circle, #FED373 4%, #F15245 30%, #D92E7F 62%, #9B36B7 85%, #515ECF);
   background: -webkit-radial-gradient(33% 100%, circle, #FED373 4%, #F15245 30%, #D92E7F 62%, #9B36B7 85%, #515ECF);
   background: -o-radial-gradient(33% 100%, circle, #FED373 4%, #F15245 30%, #D92E7F 62%, #9B36B7 85%, #515ECF);
@@ -670,10 +674,7 @@ input, button, textarea {
   height: 100%;
   line-height: 32px;
   width: 50%;
-}
-
-.switcher .switcher-text + .switcher-text {
-  text-align: right;
+  text-align: center;
 }
 
 .switcher .switcher__button {
@@ -688,7 +689,6 @@ input, button, textarea {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  padding: 0 14px;
   cursor: pointer;
   position: relative;
   overflow: hidden;
@@ -716,13 +716,11 @@ input, button, textarea {
   top: 2px;
   display: block;
   background: #1d9ae5;
-  -webkit-border-radius: 14px;
-  border-radius: 14px;
-  -webkit-transition: background .3s , -webkit-transform .3s;
-  transition: background .3s , -webkit-transform .3s;
-  -o-transition: transform .3s , background .3s;
-  transition: transform .3s , background .3s;
-  transition: transform .3s , background .3s , -webkit-transform .3s;
+  -webkit-border-radius: inherit;
+  border-radius: inherit;
+  -webkit-transition: all .3s;
+  -o-transition: all .3s;
+  transition: all .3s;
   z-index: 2;
 }
 
@@ -730,6 +728,9 @@ input, button, textarea {
   width: 0;
   background: #dfe8ed;
   z-index: 1;
+  left: 0;
+  right: 0;
+  opacity: 0;
 }
 
 .switcher input[type=checkbox]:not(:checked) + .switcher-text {
@@ -753,9 +754,8 @@ input, button, textarea {
 }
 
 .switcher input[type=checkbox]:checked ~ .label-bg:after {
-  -webkit-transform: translateX(100%);
-  -ms-transform: translateX(100%);
-  transform: translateX(100%);
+  right: 0;
+  left: auto;
 }
 
 /*form-input*/
@@ -1002,48 +1002,16 @@ textarea.form-block__input {
     background: #1d9ae5;
   }
   .switcher.hover input[type=checkbox]:not(:checked):hover ~ .label-bg:after {
-    -webkit-transform: translateX(62%);
-    -ms-transform: translateX(62%);
-    transform: translateX(62%);
-    -webkit-border-radius: 0px 14px 14px 0;
-    border-radius: 0px 14px 14px 0;
-    width: 60%;
+    width: -webkit-calc(100% - 4px);
+    width: calc(100% - 4px);
+    left: 2px;
+    opacity: 1;
   }
   .switcher.hover input[type=checkbox]:checked:hover ~ .label-bg:after {
-    -webkit-transform: translateX(0%);
-    -ms-transform: translateX(0%);
-    transform: translateX(0%);
-    -webkit-border-radius: 14px 0px 0px 14px;
-    border-radius: 14px 0px 0px 14px;
-    width: 60%;
-  }
-  .switcher.hover.js-tab-switcher input[type=checkbox]:not(:checked):hover ~ .label-bg:after {
-    -webkit-transform: translateX(65%);
-    -ms-transform: translateX(65%);
-    transform: translateX(65%);
-    -webkit-border-radius: 0px 24px 24px 0;
-    border-radius: 0px 24px 24px 0;
-  }
-  .switcher.hover.js-tab-switcher input[type=checkbox]:checked:hover ~ .label-bg:after {
-    -webkit-transform: translateX(0%);
-    -ms-transform: translateX(0%);
-    transform: translateX(0%);
-    -webkit-border-radius: 24px 0px 0px 24px;
-    border-radius: 24px 0px 0px 24px;
-  }
-  .switcher.hover.resolution__switcher input[type=checkbox]:not(:checked):hover ~ .label-bg:after {
-    -webkit-transform: translateX(64%);
-    -ms-transform: translateX(64%);
-    transform: translateX(64%);
-    -webkit-border-radius: 0px 24px 24px 0;
-    border-radius: 0px 24px 24px 0;
-  }
-  .switcher.hover.resolution__switcher input[type=checkbox]:checked:hover ~ .label-bg:after {
-    -webkit-transform: translateX(0%);
-    -ms-transform: translateX(0%);
-    transform: translateX(0%);
-    -webkit-border-radius: 24px 0px 0px 24px;
-    border-radius: 24px 0px 0px 24px;
+    width: -webkit-calc(100% - 4px) !important;
+    width: calc(100% - 4px) !important;
+    right: 2px;
+    opacity: 1;
   }
   .switcher-text:hover {
     color: #1d9ae5;
@@ -1060,5 +1028,8 @@ textarea.form-block__input {
   .close-modal:hover {
     color: #11496a;
     background: #dddddd;
+  }
+  .action-button:hover {
+    background: #3d3d3d;
   }
 }
