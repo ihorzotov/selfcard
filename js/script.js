@@ -381,7 +381,7 @@ $(document).on('click','.js-save-modal',function(){
                                     </div>';
 
 
-//       }// gallery append
+      }// gallery append
 //       else if( parentsContentType == 'Gallery') {
 //                var checkedStatus = $('.modal.active .resolution__switcher .switcher__input').prop('checked');
 //                    resolutionVal = (checkedStatus == false)? $('.modal.active .resolution__switcher .switcher-text:first').text() : $('.modal.active .resolution__switcher .switcher-text:last').text(),
