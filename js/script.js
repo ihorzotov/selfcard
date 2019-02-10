@@ -318,77 +318,77 @@ $(document).on('click','.remove-button', function(){
 });
 //
 
-// // save modal and append content to visual constructor
-// $(document).on('click','.js-save-modal',function(){
-//   var parentsContentType = $(this).parents('.modal.active').attr('data-content-type'),
-//       appendContent;
+// save modal and append content to visual constructor
+$(document).on('click','.js-save-modal',function(){
+  var parentsContentType = $(this).parents('.modal.active').attr('data-content-type'),
+      appendContent;
       
-//       // avatar append
-//       if( parentsContentType == 'Avatar') {
-//         var elementLength = $('.slide-element.self').length;
-//           if( elementLength <= 3 ){
-//               var bgSource = $('.modal.active .js-img-holder').css('background-image'),
-//                   imageSize = $('.modal.active .js-image-size li.selected').attr('data-size'),
-//                   signatureCheckbox = $('.modal.active .js-signature__checkbox').prop('checked'),
-//                   fontSize = $('.modal.active .js-font-size li.selected').attr('data-size'),
-//                   inputText = $('.modal.active .form-block__input').val();
-//                   signature = (signatureCheckbox == true)? '<p class="self__name">'+inputText+'</p>':'',
-//                   className = ' img'+imageSize+' fs'+fontSize;
+      // avatar append
+      if( parentsContentType == 'Avatar') {
+        var elementLength = $('.slide-element.self').length;
+          if( elementLength <= 3 ){
+              var bgSource = $('.modal.active .js-img-holder').css('background-image'),
+                  imageSize = $('.modal.active .js-image-size li.selected').attr('data-size'),
+                  signatureCheckbox = $('.modal.active .js-signature__checkbox').prop('checked'),
+                  fontSize = $('.modal.active .js-font-size li.selected').attr('data-size'),
+                  inputText = $('.modal.active .form-block__input').val();
+                  signature = (signatureCheckbox == true)? '<p class="self__name">'+inputText+'</p>':'',
+                  className = ' img'+imageSize+' fs'+fontSize;
 
-//               bgSource = bgSource.replace('url(','').replace(')','').replace(/\"/gi, "");
+              bgSource = bgSource.replace('url(','').replace(')','').replace(/\"/gi, "");
 
-//                   appendContent = '<div class="slide-element self '+className+'" data-target="modal-avatar">\
-//                                 <div class="slide-element__button"><img src="../img/slide-element__button.svg" alt=""></div>\
-//                                 <div class="self__photo" style="background-image: url('+bgSource+');"></div>\
-//                                 '+signature+'\
-//                                </div>';
-//           }else{
-//             //сообщение об ошибке
-//           }
-//       }  //button append
-//       else if( parentsContentType == 'Button') {
-//                var buttonAction = $('.modal.active .js-button-action li.selected').attr('data-action'),
-//                    buttonLink = $('.modal.active .js-button-link .form-block__input').val(),
-//                    buttonName = $('.modal.active .js-button-name .form-block__input').val(),
-//                    fontSize = $('.modal.active .js-font-size li.selected').attr('data-size'),
-//                    fontFamily = $('.modal.active .js-font-family li.selected').attr('data-font'),
-//                    textStyle = $('.modal.active .js-font-style .text-style__circle.active').attr('data-style'),
-//                    className = ' fs'+fontSize+ ' ff-'+fontFamily+ ' text-style-'+textStyle,
-//                    appendContent = '<div class="slide-element link-block '+className+'" data-target="modal-button">\
-//                                       <div class="slide-element__button"><img src="../img/slide-element__button.svg" alt=""></div>\
-//                                       <a href="'+buttonAction+buttonLink+'" class="button-style button-style--black">'+buttonName+'</a>\
-//                                     </div>';
+                  appendContent = '<div class="slide-element self '+className+'" data-target="modal-avatar">\
+                                <div class="slide-element__button"><img src="../img/slide-element__button.svg" alt=""></div>\
+                                <div class="self__photo" style="background-image: url('+bgSource+');"></div>\
+                                '+signature+'\
+                               </div>';
+          }else{
+            //сообщение об ошибке
+          }
+      }  //button append
+      else if( parentsContentType == 'Button') {
+               var buttonAction = $('.modal.active .js-button-action li.selected').attr('data-action'),
+                   buttonLink = $('.modal.active .js-button-link .form-block__input').val(),
+                   buttonName = $('.modal.active .js-button-name .form-block__input').val(),
+                   fontSize = $('.modal.active .js-font-size li.selected').attr('data-size'),
+                   fontFamily = $('.modal.active .js-font-family li.selected').attr('data-font'),
+                   textStyle = $('.modal.active .js-font-style .text-style__circle.active').attr('data-style'),
+                   className = ' fs'+fontSize+ ' ff-'+fontFamily+ ' text-style-'+textStyle,
+                   appendContent = '<div class="slide-element link-block '+className+'" data-target="modal-button">\
+                                      <div class="slide-element__button"><img src="../img/slide-element__button.svg" alt=""></div>\
+                                      <a href="'+buttonAction+buttonLink+'" class="button-style button-style--black">'+buttonName+'</a>\
+                                    </div>';
 
                
-//       } // text append
-//       else if( parentsContentType == 'Text') {
-//                var fontFamily = $('.modal.active .js-font-family li.selected').attr('data-font'),
-//                    fontSize = $('.modal.active .js-font-size li.selected').attr('data-size'),
-//                    textAlign = $('.modal.active .js-text-align .align-block__content.active').attr('data-align'),
-//                    textareaText = $('.modal.active .js-textarea-text .form-block__input').val(),
-//                    textStyle = $('.modal.active .js-font-style .text-style__circle.active').attr('data-style'),
-//                    className = ' fs'+fontSize+ ' ff-'+fontFamily+ ' text-style-'+textStyle+' text-align-'+textAlign,
-//                    appendContent = '<div class="slide-element text-block '+className+'" data-target="modal-text">\
-//                                       <div class="slide-element__button"><img src="../img/slide-element__button.svg" alt=""></div>\
-//                                       <p class="text">'+textareaText+'</p>\
-//                                     </div>';
+      } // text append
+      else if( parentsContentType == 'Text') {
+               var fontFamily = $('.modal.active .js-font-family li.selected').attr('data-font'),
+                   fontSize = $('.modal.active .js-font-size li.selected').attr('data-size'),
+                   textAlign = $('.modal.active .js-text-align .align-block__content.active').attr('data-align'),
+                   textareaText = $('.modal.active .js-textarea-text .form-block__input').val(),
+                   textStyle = $('.modal.active .js-font-style .text-style__circle.active').attr('data-style'),
+                   className = ' fs'+fontSize+ ' ff-'+fontFamily+ ' text-style-'+textStyle+' text-align-'+textAlign,
+                   appendContent = '<div class="slide-element text-block '+className+'" data-target="modal-text">\
+                                      <div class="slide-element__button"><img src="../img/slide-element__button.svg" alt=""></div>\
+                                      <p class="text">'+textareaText+'</p>\
+                                    </div>';
 
 
-//       } // separator append
-//       else if( parentsContentType == 'Separator') {
-//                var lineType = $('.modal.active .js-line-type li.selected').attr('data-line-type'),
-//                    hiddenLine = ($('.modal.active .js-hidden-line .hidden-line__checkbox').prop('checked') == true)? 'hidden' : 'show',
-//                    topMargin = $('.modal.active .js-top-margin li.selected').attr('data-top'),
-//                    bottomMargin = $('.modal.active .js-bottom-margin li.selected').attr('data-bottom'),
-//                    lineWidth = $('.modal.active .js-line-width li.selected').attr('data-width'),
-//                    className = ' line-type-'+lineType+ ' line-'+hiddenLine+ ' top-margin-'+topMargin+' bottom-margin-'+bottomMargin+' line-width-'+lineWidth,
-//                    appendContent = '<div class="slide-element separator-block '+className+'" data-target="modal-separator">\
-//                                       <div class="slide-element__button"><img src="../img/slide-element__button.svg" alt=""></div>\
-//                                       <hr>\
-//                                     </div>';
+      } // separator append
+      else if( parentsContentType == 'Separator') {
+               var lineType = $('.modal.active .js-line-type li.selected').attr('data-line-type'),
+                   hiddenLine = ($('.modal.active .js-hidden-line .hidden-line__checkbox').prop('checked') == true)? 'hidden' : 'show',
+                   topMargin = $('.modal.active .js-top-margin li.selected').attr('data-top'),
+                   bottomMargin = $('.modal.active .js-bottom-margin li.selected').attr('data-bottom'),
+                   lineWidth = $('.modal.active .js-line-width li.selected').attr('data-width'),
+                   className = ' line-type-'+lineType+ ' line-'+hiddenLine+ ' top-margin-'+topMargin+' bottom-margin-'+bottomMargin+' line-width-'+lineWidth,
+                   appendContent = '<div class="slide-element separator-block '+className+'" data-target="modal-separator">\
+                                      <div class="slide-element__button"><img src="../img/slide-element__button.svg" alt=""></div>\
+                                      <hr>\
+                                    </div>';
 
 
-//       }// gallery append
+      }// gallery append
 //       else if( parentsContentType == 'Gallery') {
 //                var checkedStatus = $('.modal.active .resolution__switcher .switcher__input').prop('checked');
 //                    resolutionVal = (checkedStatus == false)? $('.modal.active .resolution__switcher .switcher-text:first').text() : $('.modal.active .resolution__switcher .switcher-text:last').text(),
@@ -419,21 +419,21 @@ $(document).on('click','.remove-button', function(){
 //                                     </div>';
 
 //       }// video append
-//       else if( parentsContentType == 'Video') {
-//                var videoSource = $('.modal.active .js-video-src .form-block__input').val();
-//                var appendContent = '<div class="slide-element video-block" data-target="modal-video">\
-//                                       <div class="slide-element__button"><img src="../img/slide-element__button.svg" alt=""></div>\
-//                                       <div class="video-block__iframe">\
-//                                         <iframe src="'+getVideoId(videoSource)+'" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>\
-//                                       </div>\
-//                                     </div>';
+      else if( parentsContentType == 'Video') {
+               var videoSource = $('.modal.active .js-video-src .form-block__input').val();
+               var appendContent = '<div class="slide-element video-block" data-target="modal-video">\
+                                      <div class="slide-element__button"><img src="../img/slide-element__button.svg" alt=""></div>\
+                                      <div class="video-block__iframe">\
+                                        <iframe src="'+getVideoId(videoSource)+'" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>\
+                                      </div>\
+                                    </div>';
 
 
-//       };
+      };
 
-//    $('.page-wrapper').append(appendContent);
-//    $('.modal,body,html').removeClass('active overflow');
-// });
+   $('.page-wrapper').append(appendContent);
+   $('.modal,body,html').removeClass('active overflow');
+});
 
 
 
