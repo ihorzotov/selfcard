@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width" initial-scale="1.0">
+    <title>Document</title>
+    <link rel="icon" href="" type="image/png">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/front.css">
+</head>
+<body class="pagename-register">
+  <header class="header">
+    <div class="header-content">
+      <div class="wrapper">
+        <div class="wrapper-container wrapper-container--space">
+          <div class="header-content__img">
+            <img src="../img/selfcard.me.png" alt="">
+          </div>
+          <div class="header-authentication">
+            <span class="header-authentication__link js-authentication-modal">
+              <i class="icon-person"></i>
+              <span class="text">Войти в аккаунт</span>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+  <main class="main">
+    <div class="wrapper-register">
+      <p class="section-title section-title--regular">Регистрация</p>
+      <form action="#" class="register-form">
+        <p class="text">Быстрая регистрация через социальные сети</p>
+        <div class="register-block">
+          <a href="#" class="register-block__button instagram-button"><span class="button-text">Instagram</span> <span class="button-bg"></span></a>
+          <a href="#" class="register-block__button"><span class="button-text">Facebook</span> <span class="button-bg"></span></a>
+          <p class="register-block__text"><span class="text">или через сайт</span></p>
+        </div>
+        <label class="form-block__label password-confirmation " for="">
+          <span class="label-title">Email</span>
+          <span class="form-error__text">пароль должен содержать не менее 8 символов</span>
+          <input type="text" name="modal-email" class="form-block__input">
+          <span class="input-background"></span>
+        </label>
+        <label class="form-block__label password-confirmation " for="">
+          <span class="label-title">Логин</span>
+          <span class="form-error__text">пароль должен содержать не менее 8 символов</span>
+          <input type="text" name="modal-email" class="form-block__input">
+          <span class="input-background"></span>
+        </label>
+        <label class="form-block__label password-confirmation form-error" for="">
+          <span class="label-title">Пароль</span>
+          <span class="form-error__text">пароль должен содержать не менее 8 символов</span>
+          <input type="password" name="modal-email" class="form-block__input" value="123">
+          <span class="input-background"></span>
+          <span class="show-password"><i class="icon-eye-outline"></i></span>
+        </label>
+        <label class="form-block__label password-confirmation form-error" for="">
+          <span class="label-title">Повтор пароля</span>
+          <input type="password" name="modal-email" class="form-block__input" placeholder="Повторите свой пароль" value="">
+          <span class="input-background"></span>
+        </label>
+        <p class="register-form__text">Нажимая "Создать страницу" Вы  соглашаетесь с <br><a href="#">Условиями использования</a> и <a href="#">Политикой конфиденциальности</a></p>
+        <button class="standart-btn"><span class="text">Зарегистрироваться</span></button>
+      </form>
+    </div>
+  </main>
+  <footer class="footer">
+    <div class="modal modal-authentication">
+      <div class="modal__content">
+        <form action="#" class="modal-form">
+            <p class="modal-form__title">Вход в аккаунт</p>
+            <p class="modal-form__text">Быстрый вход через социальные сети</p>
+            <span class="close-modal"><i class="icon-close"></i></span>
+            <div class="register-block">
+              <a href="#" class="register-block__button instagram-button"><span class="button-text">Instagram</span> <span class="button-bg"></span></a>
+              <a href="#" class="register-block__button"><span class="button-text">Facebook</span> <span class="button-bg"></span></a>
+              <p class="register-block__text"><span class="text">или через сайт</span></p>
+            </div>
+            <label class="form-block__label password-confirmation form-error" for="">
+              <span class="label-title">Логин или email</span>
+              <input type="password" name="modal-email" class="form-block__input" placeholder="Введите логин или email" value="">
+              <span class="input-background"></span>
+            </label>
+            <label class="form-block__label password-confirmation form-error" for="">
+              <span class="label-title">Пароль</span>
+              <input type="password" name="modal-email" class="form-block__input" placeholder="Введите пароль" value="">
+              <span class="input-background"></span>
+            </label>
+            <button class="standart-btn standart-btn--simple "><span>Отправить</span></button>
+        </form>
+      </div>
+    </div>
+    <div class="wrapper wrapper-container">
+      <div class="footer__element copy">
+        <p>© “self-card” 2018,</p>
+        <p>Все права защищены.</p>
+      </div>
+      <div class="footer__element agree">
+        <a href="#" class="link">Лицензионное соглашение</a>
+      </div>
+      <div class="footer__element support">
+        <p class="text">Служба поддержки</p>
+        <a href="mailto:support@selfcard.com" class="link">support@selfcard.com</a>
+      </div>
+    </div>
+  </footer>
+  <script src="../js/jquery-3.2.1.min.js"></script>
+  <script>
+    // show-password button 
+    $('.show-password').on('click',function(){
+      var thisEl = $(this);
+          thisEl.toggleClass('active');
+          if( thisEl.hasClass('active') ){
+              thisEl.parents('.register-form').find('.password-confirmation .form-block__input').prop('type','text');
+          }else{
+              thisEl.parents('.register-form').find('.password-confirmation .form-block__input').prop('type','password');
+          }
+    });
+
+    // open authentication modal
+    $(".js-authentication-modal").click(function (){
+      $('body,html').addClass('overflow');
+      $('.modal-authentication').addClass('active');
+    });
+
+    // close modal
+      $('.close-modal').click(function(){
+        $(this).parents('.modal').removeClass('active');
+        $('body,html').removeClass('overflow')
+      });
+  </script>
+</body>
+</html>

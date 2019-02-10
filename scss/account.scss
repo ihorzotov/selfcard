@@ -370,6 +370,7 @@ body{
     align-items: center;
     justify-content: space-between;
     height: 70px;
+    background: #fff;
     border-radius:0px 0px 30px 30px ;
     box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.06);
     &__img{
@@ -440,7 +441,7 @@ body{
         }
         .dropdown__list{
           position: absolute;
-          width: calc(100% + 58px);
+          width: 220px;
           border-radius: 25px;
           left: -29px;
           top: -20px;
@@ -720,8 +721,9 @@ body{
 /*MAIN*/
 /*========================*/
 .main{
-  padding: 60px 0 100px 0;
+  padding:100px 0;
   background: #f5f5f5;
+  margin-top: -40px;
 }
 .slide-element{
   transition: margin .3s , height .3s;
@@ -1005,6 +1007,43 @@ body{
     transition: background .3s, color .3s;
     user-select: none;
   }
+
+/*modal-support*/
+.modal-support{
+  .modal-form{
+    padding: 60px;
+    background: #fff;
+    border-radius: 20px;
+    width: 540px;
+    margin: auto;
+    position: relative;
+    &__title{
+      font-size: 26px;
+      font-weight: 700;
+      color: #00658c;
+      text-align: center;
+      margin-bottom: 27px;
+    }
+    &__text{
+      color: #3d3d3d;
+      font-size: 15px;
+      margin-bottom: 27px;
+      text-align: center;
+    }
+    .form-block__label{
+      textarea{
+        height: 120px;
+      }
+    }
+    .form-block__label+.form-block__label{
+      margin-top: 30px;
+    }
+    .standart-btn{
+      width: 250px;
+      margin-top: 30px;
+    }
+  }
+}
 /*modal*/
 .constructor-modal{
   &.changing{
@@ -1528,8 +1567,10 @@ body{
   justify-content: space-between;
   margin-bottom: 45px;
   .section-title{
-    width: 50%;
+    width: calc(100% - 256px);
     margin: 0;
+    padding:0;
+    text-align: left;
   }
 }
 .plans-content{
@@ -1799,6 +1840,7 @@ body{
     .exit-link{
       font-size: 15px;
       font-weight: 700;
+      margin-right: 10px;
       color: #575757;
       transition: color .3s;
     }
@@ -1907,14 +1949,6 @@ body{
         display: none;
       }
     }
-    .title{
-      font-size: 12px;
-      color: #333;
-      position: absolute;
-      left: 20px;
-      top: -20px;
-      line-height: 1;
-    }
     .info{
       position: absolute;
       left: calc(100% + 29px);
@@ -1926,28 +1960,6 @@ body{
       font-size: 12px;
       font-weight: 400;
     }
-    .show-password{
-      pointer-events: auto;
-      position: absolute;
-      right: 2px;
-      top: 2px;
-      height: calc(100% - 4px);
-      width: 44px;
-      border-radius: 50%;
-      background: #ecf2f5;
-      color: #54a2d1;
-      text-align: center;
-      font-size: 20px;
-      cursor: pointer;
-      transition: color .3s , background .3s;
-      i{
-        line-height: 44px;
-      }
-      &.active{
-        color: #fff;
-        background: #54a2d1;
-      }
-    }
   }
   .button-swap{
     display: flex;
@@ -1955,6 +1967,9 @@ body{
     &__content{
       align-items: center;
       display: none;
+    }
+    .js-fields-save{
+      position: relative;
     }
     &.change{
       .button-swap__content{

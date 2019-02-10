@@ -137,7 +137,41 @@
 }
 
 @media (max-width: 1139px) {
+  .wrapper {
+    max-width: 720px;
+    padding: 0 15px;
+  }
   .aside-hover__arrow {
     display: none;
+  }
+  .plans-content .price-card {
+    width: 330px;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-bottom: 108px;
+  }
+  .plans-content .price-card__top {
+    width: calc(100% + 30px);
+    margin: 0 0 10px -30px;
+  }
+  .plans-content .price-card__list {
+    margin-bottom: 0;
+  }
+  .plans-content .price-card__flag {
+    padding: 0 10px 0 30px;
+    width: 155px;
+    font-size: 26px;
+  }
+  .plans-content .price-card__flag sup {
+    font-size: 14px;
+  }
+  .plans-content .price-card .standart-btn {
+    bottom: 30px;
+  }
+  .questions-block {
+    width: 100%;
+  }
+  .questions-block__title {
+    padding-right: 50px;
   }
 }

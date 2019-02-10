@@ -141,6 +141,13 @@ $(document).on('click','.switcher',function(){
         $('.faq-content[data-target="'+parentsID+'"]').addClass('active');
   });
 
+  // modal-support
+
+  $('.js-modal-support').on('click',function(e){
+    e.preventDefault();
+    $('body,html').addClass('overflow');
+    $('.modal-support').addClass('active');
+  });
 
 }());
 //

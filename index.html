@@ -27,10 +27,10 @@
           </li>
         </ul>
         <div class="header-authentication">
-          <a href="#" class="header-authentication__link">
+          <span class="header-authentication__link js-authentication-modal">
             <i class="icon-person"></i>
             <span class="text">Войти в аккаунт</span>
-          </a>
+          </span>
         </div>
       </div>
     </div>
@@ -179,7 +179,9 @@
         </div>
       </div>
     </div>
-    <div class="main-thrd" style="background-image: url(img/main-thrd.svg);">
+    <div class="main-thrd" >
+      <div class="main-thrd__bg main-thrd__bg--top"></div>
+      <div class="main-thrd__bg--middle"></div>
       <div class="wrapper" id="main-thrd">
         <p class="section-title section-title--small">Занимаешься сетевым маркетингом?</p>
         <p class="section-description">Специально для тебя мы подготовили особые темы оформления,<br>
@@ -205,6 +207,7 @@
           </div>
         </div>
       </div>
+      <div class="main-thrd__bg"></div>
     </div>
     <div class="main-frth" id="main-frth">
       <div class="wrapper">
@@ -343,6 +346,31 @@
         </form>
       </div>
     </div>
+    <div class="modal modal-authentication">
+      <div class="modal__content">
+        <form action="#" class="modal-form">
+            <p class="modal-form__title">Вход в аккаунт</p>
+            <p class="modal-form__text">Быстрый вход через социальные сети</p>
+            <span class="close-modal"><i class="icon-close"></i></span>
+            <div class="register-block">
+              <a href="#" class="register-block__button instagram-button"><span class="button-text">Instagram</span> <span class="button-bg"></span></a>
+              <a href="#" class="register-block__button"><span class="button-text">Facebook</span> <span class="button-bg"></span></a>
+              <p class="register-block__text"><span class="text">или через сайт</span></p>
+            </div>
+            <label class="form-block__label password-confirmation form-error" for="">
+              <span class="label-title">Логин или email</span>
+              <input type="password" name="modal-email" class="form-block__input" placeholder="Введите логин или email" value="">
+              <span class="input-background"></span>
+            </label>
+            <label class="form-block__label password-confirmation form-error" for="">
+              <span class="label-title">Пароль</span>
+              <input type="password" name="modal-email" class="form-block__input" placeholder="Введите пароль" value="">
+              <span class="input-background"></span>
+            </label>
+            <button class="standart-btn standart-btn--simple "><span>Отправить</span></button>
+        </form>
+      </div>
+    </div>
     <div class="wrapper wrapper-container">
       <div class="footer__element copy">
         <p>© “self-card” 2018,</p>
@@ -428,6 +456,12 @@
           $('.close-modal').click(function(){
             $(this).parents('.modal').removeClass('active');
             $('body,html').removeClass('overflow')
+          });
+
+          // open authentication modal
+          $(".js-authentication-modal").click(function (){
+            $('body,html').addClass('overflow');
+            $('.modal-authentication').addClass('active');
           });
 
         }());

@@ -30,7 +30,7 @@
           <span class="dropdown-button js-dropdown-button ">поддержка</span>
             <ul class="dropdown__list">
               <li class="dropdown__item"><a href="#">FAQ</a></li>
-              <li class="dropdown__item"><a href="#">Сообщить о проблеме</a></li>
+              <li class="dropdown__item"><a href="#" class="js-modal-support">Сообщить о проблеме</a></li>
             </ul>
         </li>
       </ul>
@@ -224,6 +224,28 @@
     </div>
   </main>
   <footer class="footer">
+    <div class="modal modal-support">
+      <div class="modal__content">
+        <form action="#" class="modal-form">
+            <p class="modal-form__title">Напишите нам</p>
+            <p class="modal-form__text">У вас возник вопрос? Нашли ошибку в работе сайта? Или хотите предложить улучшение сервиса?</p>
+            <span class="close-modal"><i class="icon-close"></i></span>
+            <label class="form-block__label form-error" for="">
+              <input type="text" name="modal-email" class="form-block__input" placeholder="Имя" value="">
+              <span class="input-background"></span>
+            </label>
+            <label class="form-block__label form-error" for="">
+              <input type="text" name="modal-email" class="form-block__input" placeholder="E-mail" value="">
+              <span class="input-background"></span>
+            </label>
+            <label class="form-block__label" for="">
+              <textarea name="modal-textarea" class="form-block__input" placeholder="Сообщение"></textarea>
+              <span class="input-background"></span>
+            </label>
+            <button class="standart-btn standart-btn--simple "><span>Отправить</span></button>
+        </form>
+      </div>
+    </div>
     <div class="wrapper wrapper-container">
       <div class="footer__element copy">
         <p>© “self-card” 2018,</p>
